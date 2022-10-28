@@ -1,0 +1,970 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap');
+
+@media all and (min-width: 992px) {
+  .navbar .dropdown-menu-end {
+    right: 0;
+    left: auto;
+  }
+
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    margin-top: 0;
+  }
+
+  .navbar .nav-item:hover .nav-link {
+    color: rgba(186, 104, 104, 0.69);
+  }
+
+  .navbar .dropdown-menu.fade-down {
+    top: 80%;
+    transform-origin: 0% 0%;
+  }
+
+  .navbar .dropdown-menu.fade-up {
+    top: 180%;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    transition: .3s;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+  }
+}
+
+.intro {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background: #151515 url("images/wallpaper.jpg") no-repeat fixed center bottom;
+  width: 100%;
+  height: 100%;
+  min-height: 720px;
+  display: table;
+  position: relative;
+  text-align: center;
+}
+.intro-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111111;
+  opacity: .85;
+}
+
+.cat{
+  height: 7vw;
+  width: 7vw;
+
+}
+.table-textMyRecipes{
+  font-family: "Rubik",sans-serif;
+  font-weight: bold;
+  font-size: 1.2vw;
+}
+
+.tableTextInf{
+  font-family: "Rubik",sans-serif;
+  color: black;
+  text-transform: uppercase;
+}
+.my-recipes-text{
+  font-family: 'Xanh Mono', monospace;
+  font-size: 2.7vw;
+  font-weight: bold;
+  color: darkgreen;
+}
+.modifiedB{
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: red;
+}
+.removeModified{
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-weight: bold;
+
+}
+.image-tumbnail{
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.divCont{
+  width: 50%;
+  height: 100%;
+}
+.imageLogin{
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+body {
+  background-color: rgba(240, 249, 249, 0.10);
+}
+
+.add {
+  line-height: 0.8;
+}
+
+.title {
+  color: #015008;
+  font-family: 'Rancho', cursive;
+  font-size: 1.7vw;
+
+
+}
+.titleSec {
+  color: #e5de00;
+  font-family: 'Rancho', cursive;
+  font-size: 1.7vw;
+}
+
+.navigation {
+  background-color: #fefefa;
+}
+
+
+.login-item {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.6vw;
+
+
+}
+.inputLogin{
+  height: 3.6vw;
+
+}
+.form-control:focus {
+  border: 2px solid #e5de00;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229, 222, 0, 0.5);
+  background-color: white;
+}
+.formContainer{
+  background-color: #f6f3e7;
+}
+.formBtn{
+  border: 1px solid #e5de00;
+  background-color: rgba(229, 222, 0, 0.9);
+  color: #FFFFFF;
+  height: 3vw;
+  font-family: "Rubik",sans-serif;
+  font-size: 1.3vw;
+  text-transform: uppercase;
+
+}
+.formBtn:hover{
+  color: white;
+  background-color: rgba(229, 222, 0, 0.5);
+  border: 1px solid #d5ce02;
+}
+
+.formBtnSave{
+  border: 1px solid #FF4B2B;
+  background-color: #FF4B2B;
+  color: #FFFFFF;
+  height: 2.2vw;
+  font-family: "Rubik",sans-serif;
+  font-size: 1vw;
+  text-transform: uppercase;
+
+}
+.formBtnSave:hover{
+  color: white;
+  background-color: rgba(255, 75, 43, 0.65);
+  border: 1px solid rgba(255, 75, 43, 0.51);
+}
+.btnSave{
+  border: 1px solid #857764;
+  background-color: white;
+  color: #857764;
+  height: 2.2vw;
+  font-family: 'Poppins', sans-serif;
+  width: 7vw;
+  font-size: 1vw;
+  text-transform: uppercase;
+
+}
+.meal{
+  font-size: 1.2rem;
+  color: darkred;
+  font-family: 'Poppins', sans-serif;
+
+
+}
+.trans{
+  transition: 500ms ease;
+}
+.trans:hover{
+  transform: scale(1.1);
+}
+.authorInf{
+  font-family: Georgia,sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #606060;
+  box-sizing: border-box;
+}
+.recipeTitle{
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.btnSave:hover{
+  color: white;
+  background-color: #857764;
+  border: 1px solid rgba(136, 119, 99, 0.64);
+}
+.formBtnJump{
+  border: 1px solid #93846f;
+  background-color: #a18f7a;
+  color: #FFFFFF;
+  height: 2.2vw;
+  font-family: "Rubik",sans-serif;
+  font-size: 1vw;
+  text-transform: uppercase;
+
+}
+.formBtnJump:hover{
+  color: white;
+  background-color: rgba(150, 134, 112, 0.67);
+  border: 1px solid rgba(147, 132, 111, 0.59);
+}
+.addBtn{
+  border: 1px solid #93846f;
+  background-color: #a18f7a;
+  color: #FFFFFF;
+  height: 2.2vw;
+  font-family: "Rubik",sans-serif;
+  font-size: 1vw;
+  text-transform: uppercase;
+
+}
+.addBtn:hover{
+  color: white;
+  background-color: rgba(150, 134, 112, 0.67);
+  border: 1px solid rgba(147, 132, 111, 0.59);
+}
+.form-control{
+  background-color: white;
+}
+
+.carouselDiv{
+  width: 100%;
+  height: 30vw;
+}
+.recipeContainer{
+  background-color: rgba(250, 235, 215, 0.6);
+}
+
+.editContainer{
+  background-color: rgba(250, 250, 226, 0.76);
+}
+.newestTitle{
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.8vw;
+  font-style: italic;
+  color: rgba(1,80,8,0.9);
+}
+
+.containerRecipes{
+  background-color: #f0f9f9;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-footer{
+  background-color: transparent;
+  border: none;
+  padding-right: 0;
+  padding-left: 0.7vw;
+}
+.editT{
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5vw;
+  color: darkolivegreen;
+  text-decoration: underline;
+  text-decoration-color: darkred;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.5vw;
+}
+.login-title{
+  color: #e5de00;
+  font-family: 'Secular One', sans-serif;
+  font-size: 2.2vw;
+}
+.register-title{
+  color: #e5de00;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5vw;
+}
+.user-present{
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2vw;
+  line-height: 1;
+  text-align: start;
+}
+.hover-underline-animation {
+
+  position: relative;
+  color: darkred;
+}
+
+.hover-underline-animation:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: 0;
+  left: 0;
+  background-color: darkred;
+  visibility: hidden;
+
+  transition: all 0.25s ease-in-out;
+}
+
+.hover-underline-animation:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+
+}
+
+
+
+.menu-item {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.6vw;
+  text-transform: uppercase;
+  padding-top: 1.5vw;
+  padding-bottom: 1.5vw;
+  padding-left: 0.9vw;
+  padding-right: 0.9vw;
+
+
+}
+
+.menu-item:hover {
+  color: #e5de09;
+}
+
+.dd-list {
+  font-size: 2vw;
+  width: 10.5em;
+  background-color: #fefefa;
+  border: none;
+}
+
+.dd-list2 {
+  background-color: #fefefa;
+  border: none;
+  font-size: 2vw;
+  width: 6.2em;
+}
+
+.dd-item {
+  color: #b27d7d;
+
+}
+
+.dd-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #fc9191;
+}
+
+.text {
+
+  color: #474747;
+
+}
+
+.menu-item:hover .text {
+  color: #e6e141;
+}
+
+@media only screen and (min-width: 640px) {
+  .img-ex {
+    width: 100%;
+    height: 45vh;
+
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .img-ex {
+    width: 100%;
+    height: 30vh;
+
+  }
+}
+
+.titles {
+  font-family: 'Nunito', sans-serif;
+  color: #fc1200;
+  font-size: 2.8vh;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card {
+  margin: 0 0.5em;
+  box-shadow: 1px 2px 6px 0 lightgrey;
+  border: none;
+  border-radius: 0;
+}
+
+.carousel-inner {
+  padding: 1em;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: rgba(255, 94, 110, 0.7);
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 768px) {
+  .card img {
+    height: 11em;
+  }
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+
+}
+
+.carousel-indicators .indicate {
+  background-color: #ff5e6e;
+
+}
+
+.caption {
+  background: rgba(206, 193, 193, 0.5);
+  width: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2.3vw;
+  color: rgb(255, 228, 228);
+}
+
+@media only screen and (max-width: 639px) {
+  .big-screen {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .small-screen {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .desktop-view {
+    display: none;
+  }
+}
+
+.sectionNeighbourhoods {
+  background-color: #fdf4f5;
+  padding-bottom: 5vh;
+  padding-top: 3vh;
+}
+
+.sectionNeighbourhoods2 {
+  background-color: #fdf4f5;
+  padding-bottom: 5vh;
+  padding-top: 3vh;
+}
+
+.sectionNeighbourhoodsTitle {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: calc(14px + (45 - 14) * ((100vw - 300px) / (1600 - 300)));
+  color: #c93838;
+}
+
+.sectionNeighbourhoodsTitle2 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: calc(14px + (45 - 14) * ((100vw - 300px) / (1600 - 300)));
+  color: #c93838;
+}
+
+.img-ex2 {
+  background-color: rgba(255, 94, 82, 0.25);
+  border-radius: 50%;
+}
+
+.img-ex3 {
+  background-color: rgba(165, 106, 67, 0.6);
+  border-radius: 50%;
+}
+
+.img-ex3:hover {
+  background-color: rgba(165, 106, 67, 0.2);
+}
+
+.img-ex2:hover {
+  background-color: rgb(255, 156, 156);
+}
+
+.name {
+  font-family: 'Londrina Solid', cursive;
+  color: #f56363;
+  font-size: calc(14px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.title-link {
+  text-decoration: none;
+}
+
+.login-text {
+
+  color: #4A4A4A;
+  font-size: 1.3vw;
+}
+
+@media only screen and (min-width: 640px) {
+  .img-ex2 {
+    width: 100%;
+    height: 35vh;
+
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .img-ex2 {
+    width: 100%;
+    height: 20vh;
+
+  }
+}
+
+.info {
+  font-size: calc(14px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+  background-color: #fffdfd;
+
+}
+
+#timedate {
+  font-family: "Segoe UI", sans-serif;
+  text-align: left;
+  color: #ff5e6e;
+
+}
+
+#timedate .titleTime {
+  font-variant: small-caps;
+  color: rgba(202, 14, 0, 0.8);
+  font-size: calc(20px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.spacing {
+  line-height: 2vw;
+}
+
+.date {
+  font-size: calc(5px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+  color: #ca0e00;
+  font-family: Tahoma, serif;
+
+}
+
+.time {
+  border-left: 0.4vh solid #f56363;
+  padding: 2vh;
+}
+
+.weather {
+  font-weight: lighter;
+  font-family: "Segoe UI", sans-serif;
+  text-align: left;
+  border-left: 0.4vh solid #f56363;
+  padding: 2vh;
+}
+
+.weather .weatherTitle {
+  font-variant: small-caps;
+  color: rgba(202, 14, 0, 0.8);
+  font-size: calc(20px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.subscribe {
+  font-size: calc(25px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+  background-color: #fffaf0;
+
+
+}
+
+.title-subscribe {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #a56a43;
+}
+
+@media only screen and (max-width: 639px) {
+  .img-ex3 {
+    height: 10vh;
+  }
+}
+
+.title-subscribe .description {
+  color: #a56a43;
+  font-size: 2vh;
+}
+
+.input {
+  background-color: whitesmoke;
+  border: 1px solid rgb(255, 216, 211);
+  color: #a16868;
+
+}
+
+.input:focus {
+  background-color: whitesmoke;
+  border: 1px solid rgb(255, 216, 211);
+  color: #a16868;
+}
+
+.input-button {
+  background-color: whitesmoke;
+  border: 1px solid rgb(255, 216, 211);
+  color: #a16868;
+}
+
+.input-button:hover {
+  background-color: whitesmoke;
+  border: 1px solid rgb(255, 216, 211);
+  color: red;
+}
+
+.copyright {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1vw;
+  color: rgba(161, 104, 104, 0.5);
+}
+
+.icon {
+  font-size: 1vw;
+  border-color: rgba(161, 104, 104, 0.5);
+  color: rgba(161, 104, 104, 0.5);
+}
+
+.icon:hover {
+  font-size: 1vw;
+  border-color: rgba(161, 104, 104, 0.2);
+  color: rgb(255, 241, 240);
+  background-color: rgba(161, 104, 104, 0.5);
+}
+
+.line {
+  width: 95%;
+  margin: 0 auto;
+  border-top: 1px solid #9e7878;
+
+}
+
+.card-info {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.7vw;
+  color: maroon;
+}
+
+.icon-color {
+  color: indianred;
+}
+
+.learn-more {
+  border: 1px solid #ffb6bb;
+  background-color: rgba(248, 117, 142, 0.05);
+
+}
+
+.learn-more:hover {
+  border: 1px solid #ff5e6e;
+  background-color: rgba(255, 101, 75, 0.35);
+}
+
+.learn-text {
+  font-family: Tahoma, serif;
+  color: #ff6e6e;
+}
+
+.learn-more-second {
+  border: 2px solid #ffb6bb;
+  background-color: rgba(248, 117, 142, 0.05);
+}
+
+.learn-more-second:hover {
+  border: 2px solid #ff7d83;
+  background-color: rgba(255, 145, 145, 0.35);
+}
+
+.learn-text2 {
+  font-family: Nunito, sans-serif;
+  font-weight: bold;
+  font-size: 1.1vw;
+  color: #ff6e6e;
+}
+
+.learn-more-second:hover .learn-text2 {
+  color: white;
+}
+
+.buy-tickets {
+  border: 1px solid #f1f9f8;
+  background-color: #f1f9f8;
+  text-transform: uppercase;
+  font-family: Nunito, sans-serif;
+  font-weight: bold;
+  color: #117777;
+
+}
+.prepInfo{
+  flex-direction: column;
+  align-items: start;
+  display: flex;
+  position: relative;
+
+  font-family: Nunito, sans-serif;
+  font-weight: lighter;
+  color: #683516;
+  font-size: 1vw;
+}
+
+.buy-tickets:hover {
+  border: 1px solid #e1faf9;
+  background-color: #cdeee5;
+  text-transform: uppercase;
+
+}
+
+.buy-tickets-text {
+  font-family: Nunito, sans-serif;
+  font-weight: bold;
+  font-size: 1.4vw;
+  color: #117777;
+  text-transform: uppercase;
+}
+
+.buy-tickets:hover .buy-tickets-text {
+  color: white;
+}
+
+.content {
+  background-color: rgba(253, 250, 250, 0.46);
+}
+
+.text-description {
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  font-size: 1.4vw;
+  color: #683516;
+
+}
+
+.card-infoS {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2vw;
+  color: maroon;
+}
+
+.background-color {
+  background-color: transparent;
+  box-shadow: none;
+
+}
+
+.imageSmall {
+  height: 25vh;
+}
+
+.event-title {
+  font-family: 'Playfair Display', serif;
+
+  font-size: 4vw;
+  color: #015201;
+}
+.ingrRow{
+  text-align: start;
+}
+.instrRow{
+  text-align: start;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 1vw;
+}
+.instrRow:hover{
+  background-color: #f7f7f7;
+}
+.ingr-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5vw;
+  color: gray;
+  text-decoration: underline;
+  text-decoration-color: darkred;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.5vw;
+
+}
+.dirTag{
+  text-align: center;
+
+}
+.textDesc{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6vw;
+}
+
+.textDescDir{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2vw;
+
+}
+.num{
+  font-weight: bold;
+  font-size: 1.4vw;
+}
+.event-author{
+  font-family: Georgia,sans-serif;
+  font-style: italic;
+  font-size: 1.2vw;
+  color: black;
+}
+
+.subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.8vw;
+  color: rgb(255, 94, 110);
+}
+
+.descriptionEvent {
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.6vw;
+  color: #793448;
+}
+.addInfo{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1vw;
+  color: #cd5c5d;
+}
+.map {
+  height: 20vw;
+}
+
+.suggestionText {
+  font-family: 'Exo', sans-serif;
+  color: #a30000;
+  font-size: 1.8vw;
+}
+
+.editForm input, .editForm select{
+  background-color: white;
+  border-radius: 0;
+  height: 3rem;
+}
+
+.editForm label, .editForm div{
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.3vw;
+}
+
+
+.tabsStyle{
+  font-family: 'Poppins', sans-serif;
+  font-size: 2vw;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+.nav-tabs .nav-link.active{
+  color: #ca0e00;
+}
+.tabsStyle a{
+  color: #424242;
+}
+
+.btnInfo{
+  background-color: transparent;
+  border: 2px solid rgba(252, 174, 25, 0.69);
+  color: rgba(252, 174, 25, 0.69);
+}
+.btnInfo:hover{
+  background-color: rgba(252, 174, 25, 0.69);
+  border: 2px solid rgba(252, 174, 25, 0.69);
+  color: white;
+}
+
+.btnDelete{
+  background-color: transparent;
+  border: 2px solid darkred;
+  color: darkred;
+}
+.btnDelete:hover{
+  background-color: darkred;
+  border: 2px solid darkred;
+  color: white;
+}
+.btnEdit{
+  background-color: transparent;
+  border: 2px solid darkgreen;
+  color: darkgreen;
+}
+.btnEdit:hover{
+  background-color: darkgreen;
+  border: 2px solid darkgreen;
+  color: white;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.input-text:focus {
+  box-shadow: 0px 0px 0px;
+  border-color: #f8c146;
+  outline: 0px;
+}
+
+.searchControl {
+  border: 1px solid #f8c146;
+}
+
+.cardCategory{
+  height: 10vw;
+  width: 6vw;
+}
+.authorA:hover{
+  color: #683516;
+}
+
+.demo-inline-calendar-card {
+  width: 300px;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
