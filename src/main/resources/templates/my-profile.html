@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/parts.html :: headerfiles">
+
+</head>
+<body>
+<th:block th:replace="fragments/parts.html :: headerEx"></th:block>
+
+<div class="container mt-2 py-4 recipeContainer">
+
+    <div class="row big-screen">
+        <div class="col-6 pr-0">
+            <div class="carousel-inner mb-0 pb-0 pr-0">
+                <div class=" carouselDiv">
+                    <img th:src="@{${'/uploads/' + image}}"
+                         class=" d-block w-100 imageShadow image-tumbnail" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="col-6 pt-0">
+            <p class="event-title lh-1 mb-0 ms-0 ps-0 pt-2" th:text="${profile.getEndUser().getUsername()}">
+
+            </p>
+            <div class="row justify-content-start">
+                <div class="col-6 pr-0 pl-4">
+                    <p class="event-author lh-1 mb-4 ms-0 ps-0 pt-0 mt-0 pr-0"
+                       th:text="${profile.getAge() +  ' years old'}">
+                    </p>
+                </div>
+                <div class="col-6 pl-0">
+                    <p class="event-author lh-1 mb-4 ms-0 ps-0 pt-0 mt-0 pl-0" th:text="${profile.getSex()}">
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-start my-2">
+            <span class="col-6 prepInfo">
+                <span class="title-subscribe">WEIGHT</span>
+                <span th:text="${profile.getWeight() + ' kgs'}"></span>
+            </span>
+                <span class="col-6 prepInfo">
+                <span class="title-subscribe">HEIGHT</span>
+                    <span th:text="${profile.getHeight() + ' cm'}"></span>
+            </span>
+            </div>
+            <div class="row justify-content-start my-2">
+            <span class="col-6 prepInfo">
+                <span class="title-subscribe">BMI</span>
+                <span th:text="${profile.getBMI().getValue() + ' ' + profile.getBMI().getRange()}"></span>
+            </span>
+                <span class="col-6 prepInfo">
+                <span class="title-subscribe">ACTIVITY</span>
+                <span th:text="${profile.getActivity()}"></span>
+            </span>
+            </div>
+            <div class="row justify-content-start my-2">
+            <span class="col-6 prepInfo">
+                <span class="title-subscribe">TARGET WEIGHT</span>
+                <span th:text="${profile.getGoalWeight() + ' kgs'}"></span>
+            </span>
+                <span class="col-6 prepInfo">
+                <span class="title-subscribe">GOAL</span>
+                    <span th:text="${profile.getGoal()}"></span>
+            </span>
+            </div>
+            <div class="row justify-content-start my-2">
+                <span class="col-12 prepInfo">
+                <span class="title-subscribe">CALORIES PER DAY</span>
+                    <span th:text="${profile.getTotalCaloriesPerDay() + ' kcal'}"></span>
+            </span>
+            </div>
+            <div class="row justify-content-start my-2">
+                <span class="col-12 prepInfo">
+                <a th:href="@{'/profile/edit/{id}' (id=${profile.getId()})}"
+                   class="btn btnSave rounded-pill px-3">Update profile <i
+                        class="fa-solid fa-pen"></i></a>
+            </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/parts.html :: footer"></th:block>
+
+</body>
+</html>

@@ -190,7 +190,7 @@ body {
   color: #857764;
   height: 2.2vw;
   font-family: 'Poppins', sans-serif;
-  width: 7vw;
+  width: 90%;
   font-size: 1vw;
   text-transform: uppercase;
 
@@ -751,9 +751,14 @@ body {
   font-family: Nunito, sans-serif;
   font-weight: lighter;
   color: #683516;
-  font-size: 1vw;
+  font-size: 1.3vw;
 }
 
+.prepTitle {
+  font-weight: bold;
+  font-family: Nunito, sans-serif;
+  color: saddlebrown;
+}
 .buy-tickets:hover {
   border: 1px solid #e1faf9;
   background-color: #cdeee5;
@@ -849,8 +854,8 @@ body {
 .event-author{
   font-family: Georgia,sans-serif;
   font-style: italic;
-  font-size: 1.2vw;
-  color: black;
+  font-size: 1.8vw;
+  color: darkslategray;
 }
 
 .subtitle {

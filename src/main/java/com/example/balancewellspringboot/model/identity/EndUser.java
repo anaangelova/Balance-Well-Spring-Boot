@@ -1,7 +1,9 @@
 package com.example.balancewellspringboot.model.identity;
 
+import com.example.balancewellspringboot.model.Image;
 import com.example.balancewellspringboot.model.Profile;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -37,6 +39,10 @@ public class EndUser implements UserDetails {
 
     @OneToMany(mappedBy = "endUser",fetch = FetchType.EAGER)
     private List<Profile> profilesForUser;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "endUserOwner")
+    private List<Image> images;
 
     public EndUser(){}
 
