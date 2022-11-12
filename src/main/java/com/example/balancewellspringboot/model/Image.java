@@ -20,9 +20,9 @@ public class Image {
 
     public Image(){}
 
-    public Image(String title, EndUser endUserOwner){
+    public Image(String title, EndUser endUserOwner, LocalDateTime now){
         this.title=title;
         this.endUserOwner=endUserOwner;
-        this.uploadDate = LocalDateTime.now();
+        this.uploadDate = now;
     }
 }

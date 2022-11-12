@@ -41,9 +41,10 @@ public class ProfileController {
     @GetMapping("/my-profile/{username}")
     public String getProfileForUsername(@PathVariable String username, Model model) {
         Profile profile = profileService.getProfileForUsername(username);
-        String latestImage = profile.getEndUser().getImages().get(0).getTitle();
+        String latestImage = profile.getEndUser().getImages().get(profile.getEndUser().getImages().size()-1).getTitle();
         model.addAttribute("profile", profile);
         model.addAttribute("image", latestImage);
+        model.addAttribute("endUser", profile.getEndUser().getUsername());
 
         return "my-profile";
     }
@@ -55,6 +56,13 @@ public class ProfileController {
         model.addAttribute("goals", getGoals());
         model.addAttribute("activities", getActivities());
         return "edit-profile";
+    }
+
+    @PostMapping("/edit")
+    public String editProfile(ProfileDTO profile, @RequestPart List<MultipartFile> images, HttpServletRequest request) throws IOException {
+        List<String> imagesNames= Collections.singletonList(this.saveImage(images.get(0)));
+        profileService.save(profile, imagesNames);
+        return "redirect:/profile/my-profile/"+request.getRemoteUser();
     }
 
     private String saveImage(MultipartFile img) throws IOException {

@@ -2,9 +2,7 @@ package com.example.balancewellspringboot.model;
 
 import com.example.balancewellspringboot.model.identity.EndUser;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,14 +25,14 @@ public class Profile {
     private Double goalWeight;
     @OneToOne
     private BMI BMI;
-    private Double totalCaloriesPerDay;
+    private Long totalCaloriesPerDay;
     @Enumerated(EnumType.STRING)
     private Goal goal;
     @Enumerated(EnumType.STRING)
     private Activity activity;
     private LocalDateTime dateOfCreation;
 
-    public Profile(Long id, EndUser endUser, Integer age, Sex sex, Double height, Double weight, Double goalWeight, BMI BMI, Double totalCaloriesPerDay, Goal goal, Activity activity, LocalDateTime dateOfCreation) {
+    public Profile(Long id, EndUser endUser, Integer age, Sex sex, Double height, Double weight, Double goalWeight, BMI BMI, Long totalCaloriesPerDay, Goal goal, Activity activity, LocalDateTime dateOfCreation) {
         this.id = id;
         this.endUser = endUser;
         this.age = age;

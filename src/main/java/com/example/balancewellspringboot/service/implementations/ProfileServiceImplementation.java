@@ -45,6 +45,7 @@ public class ProfileServiceImplementation implements ProfileService {
         Sex sex = profileDTO.isSex() ? Sex.MALE : Sex.FEMALE;
         EndUser currentUser = endUserRepository.findByUsername(profileDTO.getEndUser()).orElseThrow();
         BMI bmi = bmiRepository.save(calculateBMI(height,weight));
+        LocalDateTime now = LocalDateTime.now();
 
         Profile profile = Profile
                 .builder()
@@ -57,20 +58,24 @@ public class ProfileServiceImplementation implements ProfileService {
                 .activity(activity)
                 .endUser(currentUser)
                 .BMI(bmi)
-                .dateOfCreation(LocalDateTime.now())
+                .dateOfCreation(now)
                 .totalCaloriesPerDay(calculateTotalCaloriesPerDay(height, weight,profileDTO.isSex(), age, goal, activity))
                 .build()
                 ;
 
         List<Image> imagesToAdd = new ArrayList<>();
         for (String m : imagesNames) {
-            imagesToAdd.add(new Image(m, currentUser));
+            imagesToAdd.add(new Image(m, currentUser, now));
         }
         imageRepository.saveAll(imagesToAdd);
         currentUser.getImages().addAll(imagesToAdd);
+
+        Profile savedProfile = profileRepository.save(profile);
+
+        currentUser.getProfilesForUser().add(savedProfile);
         endUserRepository.save(currentUser);
 
-        return Optional.of(profileRepository.save(profile));
+        return Optional.of(savedProfile);
     }
 
     @Override
@@ -84,7 +89,12 @@ public class ProfileServiceImplementation implements ProfileService {
         return profileRepository.findById(id).orElseThrow(ProfileDoesNotExist::new);
     }
 
-    private Double calculateTotalCaloriesPerDay(Double height, Double weight,Boolean sex, Integer age, Goal goal, Activity activity) {
+    @Override
+    public List<Profile> getProfilesForUsername(String username) {
+        return profileRepository.findAllByEndUser_Username(username);
+    }
+
+    private long calculateTotalCaloriesPerDay(Double height, Double weight,Boolean sex, Integer age, Goal goal, Activity activity) {
         Double BMR;
         if (sex) { // M
             BMR = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
@@ -92,7 +102,12 @@ public class ProfileServiceImplementation implements ProfileService {
             BMR = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
         }
 
-        return BigDecimal.valueOf(BMR * activity.getFactor()).setScale(2, RoundingMode.CEILING).doubleValue();
+        if(goal.equals(Goal.WEIGHT_LOSS))
+            return Math.round(BMR * 0.9 * activity.getFactor());
+        else if(goal.equals(Goal.MUSCLE_GAIN))
+            return Math.round((BMR * 1.1) * activity.getFactor());
+        else
+            return Math.round(BMR * activity.getFactor());
     }
 
     private BMI calculateBMI(Double height, Double weight){

@@ -10,4 +10,5 @@ public interface ProfileService {
     Optional<Profile> save(ProfileDTO profileDTO, List<String> imagesNames);
     Profile getProfileForUsername(String username);
     Profile findById(Long id);
+    List<Profile> getProfilesForUsername(String username);
 }
