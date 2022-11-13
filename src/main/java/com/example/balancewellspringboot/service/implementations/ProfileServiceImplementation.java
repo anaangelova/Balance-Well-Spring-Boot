@@ -1,6 +1,7 @@
 package com.example.balancewellspringboot.service.implementations;
 
 import com.example.balancewellspringboot.model.*;
+import com.example.balancewellspringboot.model.dto.LineChartDTO;
 import com.example.balancewellspringboot.model.dto.ProfileDTO;
 import com.example.balancewellspringboot.model.exceptions.ProfileDoesNotExist;
 import com.example.balancewellspringboot.model.identity.EndUser;
@@ -16,8 +17,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProfileServiceImplementation implements ProfileService {
@@ -92,6 +95,24 @@ public class ProfileServiceImplementation implements ProfileService {
     @Override
     public List<Profile> getProfilesForUsername(String username) {
         return profileRepository.findAllByEndUser_Username(username);
+    }
+
+    @Override
+    public List<LineChartDTO> getLineChartDataForUser(String username) {
+        List<Profile> profilesForUser = this.getProfilesForUsername(username);
+
+        return profilesForUser.stream().sorted(Comparator.comparing(Profile::getDateOfCreation)).map(p ->
+        {
+            String image = "/uploads/" + p.getEndUser().getImages().stream().filter(i -> i.getUploadDate().equals(p.getDateOfCreation()))
+                    .findFirst().get().getTitle();
+            //TODO create relation between image and profile entities
+
+            return new LineChartDTO(p.getDateOfCreation().getYear(),
+                    p.getDateOfCreation().getMonthValue(),p.getDateOfCreation().getDayOfMonth()
+                    ,p.getWeight(),image);
+
+        }).collect(Collectors.toList());
+
     }
 
     private long calculateTotalCaloriesPerDay(Double height, Double weight,Boolean sex, Integer age, Goal goal, Activity activity) {
