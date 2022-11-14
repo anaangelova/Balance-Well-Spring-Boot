@@ -93,7 +93,7 @@
                     </a></li>
 
                     <li class="nav-item menu-item " th:if="${#request.getRemoteUser() != null}">
-                        <a class="nav-link hover-underline-animation" th:href="@{'/my-profile/{id}' (id=${#request.getRemoteUser()})}"> <span
+                        <a class="nav-link hover-underline-animation" th:href="@{'/profile/my-profile/{id}' (id=${#request.getRemoteUser()})}"> <span
                             class="text">My &nbsp;profile</span>
                     </a></li>
 

@@ -95,9 +95,8 @@
 
 }
 .image-tumbnail{
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .divCont{
@@ -825,7 +824,7 @@ body {
 }
 .ingr-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5vw;
+  font-size: 3.5vw;
   color: gray;
   text-decoration: underline;
   text-decoration-color: darkred;
@@ -976,4 +975,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 img{
   pointer-events: none;
+}
+
+.uploadButton::-webkit-file-upload-button {
+  border: 1px solid #FF4B2B;
+  background-color: #FF4B2B;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  outline: none;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  transition: all 1s ease;
+}
+
+.uploadButton:hover::-webkit-file-upload-button {
+  background-color: rgba(255, 75, 43, 0.65);
+  border: 1px solid rgba(255, 75, 43, 0.51);
+  color: white;
 }
