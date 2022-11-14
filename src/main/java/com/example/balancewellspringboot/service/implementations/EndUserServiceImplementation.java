@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +36,7 @@ public class EndUserServiceImplementation implements EndUserService {
             throw new IllegalArgumentException();
         if (password.equals(repeatPassword)) {
             if(passwordValidation(password)){
-                EndUser user = new EndUser(username,email, passwordEncoder.encode(password), firstName, lastName,role, Provider.LOCAL);
+                EndUser user = new EndUser(username,email, passwordEncoder.encode(password), firstName, lastName,role, Provider.LOCAL, new ArrayList<>());
                 if (endUserRepository.findByUsername(username).isPresent()) {
                     throw new UserExistsException(username);
                 }

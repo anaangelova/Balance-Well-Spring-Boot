@@ -1,6 +1,7 @@
 package com.example.balancewellspringboot.model.identity;
 
 import com.example.balancewellspringboot.model.Image;
+import com.example.balancewellspringboot.model.LoggedDay;
 import com.example.balancewellspringboot.model.Profile;
 import lombok.Data;
 import lombok.ToString;
@@ -44,10 +45,13 @@ public class EndUser implements UserDetails {
     @OneToMany(mappedBy = "endUserOwner")
     private List<Image> images;
 
+    @OneToMany(mappedBy = "endUser")
+    private List<LoggedDay> loggedDayList;
+
     public EndUser(){}
 
 
-    public EndUser(String username, String email, String password, String firstName, String lastName, Role role, Provider provider) {
+    public EndUser(String username, String email, String password, String firstName, String lastName, Role role, Provider provider, List<LoggedDay> loggedDayList) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -55,6 +59,7 @@ public class EndUser implements UserDetails {
         this.lastName = lastName;
         this.role = role;
         this.provider = provider;
+        this.loggedDayList = loggedDayList;
     }
 
     @Override
