@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/","/main.css","/main.js","/balancewell.js","/style.css", "/images/**", "/home", "/register","/oauth/**","/sendEmail","/uploads/**","/api/**").permitAll()
+                .antMatchers("/","/main.css","/main.js","/balancewell.js","/style.css", "/images/**", "/register","/oauth/**","/sendEmail","/uploads/**","/api/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
