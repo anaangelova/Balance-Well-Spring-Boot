@@ -1,23 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    populateLogDayInitially();
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         navLinks: true,
-        navLinkDayClick: function(date) {
+        headerToolbar: {
+            start: 'title',
+            center: '',
+            end: ''
+        },
+        footerToolbar: {
+            start: '',
+            center: 'prev,next',
+            end: ''
+        },
+        navLinkDayClick: function (date) {
             $.ajax({
-                url: "http://localhost:8080/api/calendar/logDay?date="+date.toISOString(),
+                url: "http://localhost:8080/calendar/logDay?date=" + date.toISOString(),
                 success: function (result) {
-                    const logDay = JSON.parse(result);
-                    console.log(logDay);
-                    $('#diaryInfo')
-                        .append('<span>'+logDay.dateForDay+'</span></br>')
-                        .append('<span>Target calories: '+logDay.targetCalories+'</span></br>')
-                        .append('<span>Total calories: '+logDay.totalCalories+'</span></br>')
-                        .show()
-                    ;
+                    //const logDay = JSON.parse(result);
+                    $('#diaryInfo').html(result).show();
 
-                }});
+                }
+            });
         }
     });
     calendar.render();
+
+    function populateLogDayInitially() {
+        $.ajax({
+            url: "http://localhost:8080/calendar/logDay?date=" + new Date().toISOString(),
+            success: function (result) {
+                $('#diaryInfo').html(result).show();
+            }
+        });
+    }
 });

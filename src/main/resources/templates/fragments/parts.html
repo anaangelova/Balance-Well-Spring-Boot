@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
     <title>title</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" th:href="@{/style.css}">
 
 </head>
 <body>
@@ -72,16 +72,15 @@
                     <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/home"> <span
                             class="text">Home</span>
                     </a></li>
+                    <li class="nav-item menu-item " th:if="${#request.getRemoteUser() != null}">
+                        <a class="nav-link hover-underline-animation" th:href="@{'/profile/my-profile/{id}' (id=${#request.getRemoteUser()})}"> <span
+                                class="text">My &nbsp;profile</span>
+                        </a></li>
                     <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/home"> <span
                             class="text">Healthy Lifestyle</span>
                     </a></li>
                     <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/home"> <span
                             class="text">Home</span>
-                    </a></li>
-
-                    <li class="nav-item menu-item " th:if="${#request.getRemoteUser() != null}">
-                        <a class="nav-link hover-underline-animation" th:href="@{'/profile/my-profile/{id}' (id=${#request.getRemoteUser()})}"> <span
-                            class="text">My &nbsp;profile</span>
                     </a></li>
 
                 </ul>

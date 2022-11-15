@@ -1,0 +1,22 @@
+<div th:text="${day.getDateForDay()}"></div>
+<div th:text="${ 'Daily calories goal: ' + day.getTargetCalories() + 'kcal'}"></div>
+<div th:text="${ 'Total calories: ' + day.getTotalCalories() + 'kcal'}"></div>
+<div th:text="${ 'Remaining calories: ' + (day.getTargetCalories()-day.getTotalCalories()) + 'kcal'}"></div>
+<div>Meals</div>
+<div th:each="meal : ${day.getMealList()}">
+    <div th:text="${meal.getName()}"></div>
+    <div th:text="${'Calories in meal: ' + meal.getCaloriesInMeal()}"></div>
+    <div th:if="${meal.getIngredientList().size()>0}">
+        <div>Ingredients:</div>
+        <div th:each="ingr : ${meal.getIngredientList()}">
+            <div th:text="${ingr.getFormatted()}"></div>
+        </div>
+    </div>
+    <div th:if="${meal.getIngredientList().size()<=0}">
+        <div th:text="${ 'You haven not added anything for ' + meal.getName()}"></div>
+    </div>
+    <div>
+        <a href="/recipes/addRecipe" class="btn addBtn rounded-0">ADD FOOD</a>
+    </div>
+</div>
+
