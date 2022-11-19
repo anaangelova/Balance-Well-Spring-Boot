@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 public class MealDTO {
     private String name;
-    private Double caloriesInMeal;
+    private int caloriesInMeal;
     private List<IngredientDTO> ingredientList;
 }

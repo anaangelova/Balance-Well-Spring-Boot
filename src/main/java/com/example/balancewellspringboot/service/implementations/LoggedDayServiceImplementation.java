@@ -12,11 +12,15 @@ import com.example.balancewellspringboot.service.interfaces.EndUserService;
 import com.example.balancewellspringboot.service.interfaces.LoggedDayService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -73,20 +77,26 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
     @Override
     public LoggedDayDTO getLoggedDayDTO(String username, LocalDateTime date) {
         LoggedDay loggedDay = this.getLoggedDay(username, date);
+        String formattedDate = formatDate(loggedDay.getDateForDay().toLocalDate());
         return LoggedDayDTO
                 .builder()
-                .dateForDay(loggedDay.getDateForDay())
+                .dateForDay(formattedDate)
                 .targetCalories(loggedDay.getTargetCalories())
                 .totalCalories(loggedDay.getTotalCalories())
                 .mealList(getMealList(loggedDay.getAllMealsForDay()))
                 .build();
     }
 
+    private String formatDate(LocalDate dateForDay) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd LLL yyyy", Locale.ENGLISH);
+        return  dateForDay.format(formatter);
+    }
+
     private List<MealDTO> getMealList(List<Meal> allMealsForDay) {
         return allMealsForDay.stream().map(m ->
                 MealDTO.builder()
-                        .name(m.getName())
-                        .caloriesInMeal(m.getCaloriesInMeal())
+                        .name(StringUtils.capitalize(m.getName().toLowerCase()))
+                        .caloriesInMeal(m.getCaloriesInMeal().intValue())
                         .ingredientList(getIngredientList(m.getIngredientList()))
                         .build()
         ).collect(Collectors.toList());

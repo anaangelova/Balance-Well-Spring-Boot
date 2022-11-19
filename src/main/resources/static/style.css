@@ -208,9 +208,9 @@ body {
   transform: scale(1.1);
 }
 .authorInf{
-  font-family: Georgia,sans-serif;
-  font-style: italic;
-  font-size: 1rem;
+  font-family: Poppins, sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
   color: #606060;
   box-sizing: border-box;
 }
@@ -270,15 +270,15 @@ body {
   background-color: rgba(250, 250, 226, 0.76);
 }
 .newestTitle{
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.8vw;
-  font-style: italic;
+  font-family: Poppins, sans-serif;
+  font-size: 2vw;
   color: rgba(1,80,8,0.9);
 }
 
 .containerRecipes{
   background-color: #f0f9f9;
-  max-width: 80%;
+  width: 90%;
+  min-height: 620px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -732,15 +732,15 @@ body {
   color: white;
 }
 
-.buy-tickets {
-  border: 1px solid #f1f9f8;
-  background-color: #f1f9f8;
+.foodTitleContainer {
   text-transform: uppercase;
-  font-family: Nunito, sans-serif;
+  font-family: Poppins, sans-serif;
+  font-size: 2vw;
   font-weight: bold;
   color: #117777;
 
 }
+
 .prepInfo{
   flex-direction: column;
   align-items: start;
@@ -757,24 +757,6 @@ body {
   font-weight: bold;
   font-family: Nunito, sans-serif;
   color: saddlebrown;
-}
-.buy-tickets:hover {
-  border: 1px solid #e1faf9;
-  background-color: #cdeee5;
-  text-transform: uppercase;
-
-}
-
-.buy-tickets-text {
-  font-family: Nunito, sans-serif;
-  font-weight: bold;
-  font-size: 1.4vw;
-  color: #117777;
-  text-transform: uppercase;
-}
-
-.buy-tickets:hover .buy-tickets-text {
-  color: white;
 }
 
 .content {
@@ -1033,4 +1015,80 @@ img{
 
 .foodLink {
   cursor: pointer;
+}
+
+.kcalText {
+  font-family: Poppins, sans-serif;
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: #606060;
+}
+
+.nutrientsInfoText {
+  font-family: Poppins, sans-serif;
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: #606060;
+}
+
+.loader {
+  width: 4vw;
+  height: 4vw;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.margin-loader {
+  margin-top: 14vw;
+}
+
+.loadingText {
+  font-family: Poppins, sans-serif;
+  font-size: 1vw;
+  color: #606060;
+}
+
+.date-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5vw;
+  color: #010165;
+  text-decoration: underline;
+  text-decoration-color: darkslateblue;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.5vw;
+
+}
+
+.caloriesInfoContainer {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #a56a43;
+  font-size: 1.5vw;
+}
+
+.caloriesInfoSpan {
+  font-family: Nunito, sans-serif;
+  font-weight: lighter;
+  color: #683516;
+  font-size: 1.3vw;
+}
+
+.mealsInfoContainer {
+  font-family: Poppins, sans-serif;
+  font-size: 1.75vw;
+  font-weight: bold;
+  color: #606060;
+  line-height: 1;
 }

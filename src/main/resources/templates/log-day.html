@@ -1,22 +1,24 @@
-<div th:text="${day.getDateForDay()}"></div>
-<div th:text="${ 'Daily calories goal: ' + day.getTargetCalories() + 'kcal'}"></div>
-<div th:text="${ 'Total calories: ' + day.getTotalCalories() + 'kcal'}"></div>
-<div th:text="${ 'Remaining calories: ' + (day.getTargetCalories()-day.getTotalCalories()) + 'kcal'}"></div>
-<div>Meals</div>
-<div th:each="meal : ${day.getMealList()}">
-    <div th:text="${meal.getName()}"></div>
-    <div th:text="${'Calories in meal: ' + meal.getCaloriesInMeal()}"></div>
+<div th:text="${day.getDateForDay()}" class="date-title mt-2 mb-3"></div>
+<div class="caloriesInfoContainer mb-5">
+    <div>Daily calories goal: <span class="caloriesInfoSpan" th:text="${day.getTargetCalories() + ' kcal'}"></span></div>
+    <div>Total calories: <span class="caloriesInfoSpan" th:text="${day.getTotalCalories() + ' kcal'}"></span></div>
+    <div>Remaining calories: <span class="caloriesInfoSpan" th:text="${(day.getTargetCalories()-day.getTotalCalories()) + ' kcal'}"></span></div>
+</div>
+
+
+<div th:each="meal : ${day.getMealList()}" class="mb-4">
+    <div th:text="${meal.getName()}" class="mealsInfoContainer"></div>
+    <div th:text="${'Calories in meal: ' + meal.getCaloriesInMeal() + ' kcal'}" class="nutrientsInfoText mb-2"></div>
     <div th:if="${meal.getIngredientList().size()>0}">
-        <div>Ingredients:</div>
         <div th:each="ingr : ${meal.getIngredientList()}">
-            <div th:text="${ingr.getFormatted()}"></div>
+            <div th:text="${ingr.getFormatted()}" class="authorInf"></div>
         </div>
     </div>
     <div th:if="${meal.getIngredientList().size()<=0}">
-        <div th:text="${ 'You haven not added anything for ' + meal.getName()}"></div>
+        <div th:text="${ 'You have not added anything for ' + meal.getName().toLowerCase()}"></div>
     </div>
     <div>
-        <a href="/recipes/addRecipe" class="btn addBtn rounded-0">ADD FOOD</a>
+        <a th:href="@{'/food/addFood/{meal}' (meal=${meal.getName()})}" class="btn addBtn rounded-0 mt-1">ADD FOOD</a>
     </div>
 </div>
 
