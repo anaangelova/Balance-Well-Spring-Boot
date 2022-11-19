@@ -9,9 +9,9 @@ import lombok.Data;
 public class IngredientDTO {
     private String name;
     private Double quantity;
-    private Measurement measurement;
+    private String measurement;
     private Double caloriesInIngredient;
     public String getFormatted(){
-        return String.format("%.0f %s %s",this.quantity,this.measurement.name(),this.name);
+        return String.format("%.0f %s %s",this.quantity,this.measurement,this.name);
     }
 }

@@ -15,18 +15,19 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String foodIdApi;
     private Double quantity;
-    @Enumerated(EnumType.STRING)
-    private Measurement measurement;
+    private String measurement;
     private Double caloriesInIngredient;
     @ManyToOne
     private Meal meal;
 
     public Ingredient(){}
 
-    public Ingredient(Long id, String name, Double quantity, Measurement measurement, Double caloriesInIngredient, Meal meal) {
+    public Ingredient(Long id, String name, String foodIdApi, Double quantity, String measurement, Double caloriesInIngredient, Meal meal) {
         this.id = id;
         this.name = name;
+        this.foodIdApi = foodIdApi;
         this.quantity = quantity;
         this.measurement = measurement;
         this.caloriesInIngredient = caloriesInIngredient;
@@ -34,7 +35,7 @@ public class Ingredient {
     }
 
     public String getFormatted(){
-        return String.format("%.0f %s %s",this.quantity,this.measurement.name(),this.name);
+        return String.format("%.0f %s %s",this.quantity,this.measurement,this.name);
     }
 
 }

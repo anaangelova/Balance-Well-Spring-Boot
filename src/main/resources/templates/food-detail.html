@@ -13,25 +13,30 @@
         </div>
     </div>
 </div>
-<div class="row mt-4">
-    <div class="col-12 d-flex mb-3 px-5">
-        <input type="number" name="ingredientQuantities" class="form-control m-input mr-2" min="0" placeholder="Enter quantity"
-               required>
-        <select name="ingredientMeasurements" class="form-control mr-2" required>
+<form th:action="@{'/food/saveFood/{date}/{meal}/{foodId}' ( date=${date}, meal=${meal}, foodId=${foodDetail.getFoodId()})}" method="POST">
+    <div class="row mt-4">
+        <div class="col-12 d-flex mb-3 px-5">
 
-            <option
-                    th:each="measurement : ${foodDetail.getMeasures()}"
-                    th:value="${measurement}"
-                    th:text="${measurement}">
-            </option>
-        </select>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12 d-flex justify-content-center">
-        <div>
-            <a th:href="@{'/food/saveFood/{foodId}' (foodId=${foodDetail.getFoodId()})}" class="btn formBtnSave mt-2 d-block round-0 px-5">ADD</a>
+            <input type="number" name="ingredientQuantities" class="form-control m-input mr-2" min="0"
+                   placeholder="Enter quantity"
+                   required>
+            <select name="ingredientMeasurements" class="form-control mr-2" required>
+
+                <option
+                        th:each="measurement : ${foodDetail.getMeasures()}"
+                        th:value="${measurement}"
+                        th:text="${measurement}">
+                </option>
+            </select>
         </div>
     </div>
-</div>
-
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div>
+                <button type="submit"
+                        class="btn formBtnSave mt-2 d-block round-0 px-5">ADD
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

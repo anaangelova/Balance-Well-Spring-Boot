@@ -18,7 +18,7 @@
         <div th:text="${ 'You have not added anything for ' + meal.getName().toLowerCase()}"></div>
     </div>
     <div>
-        <a th:href="@{'/food/addFood/{meal}' (meal=${meal.getName()})}" class="btn addBtn rounded-0 mt-1">ADD FOOD</a>
+        <a th:href="@{'/food/addFood/{date}/{meal}' (date=${localDate}, meal=${meal.getName()})}" class="btn addBtn rounded-0 mt-1">ADD FOOD</a>
     </div>
 </div>
 

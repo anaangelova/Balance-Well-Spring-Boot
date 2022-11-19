@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.ZoneId;
 
 @Controller
@@ -26,9 +26,10 @@ public class CalendarController {
     @GetMapping("/logDay")
     public String getLoggedDay(@RequestParam String date, HttpServletRequest httpServletRequest, Model model) {
         Instant time = Instant.parse(date);
-        LocalDateTime localDate = time.atZone(ZoneId.systemDefault()).toLocalDateTime();
+        LocalDate localDate = time.atZone(ZoneId.systemDefault()).toLocalDate();
         LoggedDayDTO loggedDayDTO = loggedDayService.getLoggedDayDTO(httpServletRequest.getRemoteUser(), localDate);
         model.addAttribute("day", loggedDayDTO);
+        model.addAttribute("localDate", localDate);
         return "log-day";
     }
 }

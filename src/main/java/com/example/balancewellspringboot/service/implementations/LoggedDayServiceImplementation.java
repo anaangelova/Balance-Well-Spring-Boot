@@ -40,7 +40,7 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
 
     @Override
     @Transactional
-    public LoggedDay getLoggedDay(String username, LocalDateTime date) {
+    public LoggedDay getLoggedDay(String username, LocalDate date) {
         EndUser currentUser = (EndUser) endUserService.loadUserByUsername(username);
         Profile currentProfileForUser = profileRepository.getLatestProfileForUsername(username);
 
@@ -75,9 +75,9 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
     }
 
     @Override
-    public LoggedDayDTO getLoggedDayDTO(String username, LocalDateTime date) {
+    public LoggedDayDTO getLoggedDayDTO(String username, LocalDate date) {
         LoggedDay loggedDay = this.getLoggedDay(username, date);
-        String formattedDate = formatDate(loggedDay.getDateForDay().toLocalDate());
+        String formattedDate = formatDate(loggedDay.getDateForDay());
         return LoggedDayDTO
                 .builder()
                 .dateForDay(formattedDate)

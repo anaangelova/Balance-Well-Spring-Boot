@@ -30,4 +30,8 @@ public class Meal {
         this.loggedDay = loggedDay;
         this.ingredientList = ingredientList;
     }
+
+    public void updateCaloriesInMeal() {
+        ingredientList.forEach(i -> caloriesInMeal = caloriesInMeal + i.getCaloriesInIngredient());
+    }
 }

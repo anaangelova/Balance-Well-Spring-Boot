@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
@@ -28,7 +29,7 @@ public class CalendarRestController {
     @GetMapping("/logDay")
     public String getLoggedDay(@RequestParam String date, HttpServletRequest httpServletRequest) throws JsonProcessingException {
         Instant time = Instant.parse(date);
-        LocalDateTime localDate = time.atZone(ZoneId.systemDefault()).toLocalDateTime();
+        LocalDate localDate = time.atZone(ZoneId.systemDefault()).toLocalDate();
         ObjectMapper objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();

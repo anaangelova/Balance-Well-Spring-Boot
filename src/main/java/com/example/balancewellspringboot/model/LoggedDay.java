@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class LoggedDay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private LocalDateTime dateForDay;
+    private LocalDate dateForDay;
     private Long targetCalories;
     private Long totalCalories;
     @OneToMany(mappedBy = "loggedDay")
@@ -30,12 +31,16 @@ public class LoggedDay {
 
     }
 
-    public LoggedDay(long id, LocalDateTime dateForDay, Long targetCalories, Long totalCalories, List<Meal> allMealsForDay, EndUser endUser) {
+    public LoggedDay(long id, LocalDate dateForDay, Long targetCalories, Long totalCalories, List<Meal> allMealsForDay, EndUser endUser) {
         this.id = id;
         this.dateForDay = dateForDay;
         this.targetCalories = targetCalories;
         this.totalCalories = totalCalories;
         this.allMealsForDay = allMealsForDay;
         this.endUser = endUser;
+    }
+
+    public void updateTotalCalories() {
+        totalCalories = allMealsForDay.stream().map(Meal::getCaloriesInMeal).reduce(0.0, (a, b) -> a+b).longValue();
     }
 }
