@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/parts.html :: headerfiles">
+
+</head>
+<body>
+<th:block th:replace="fragments/parts.html :: headerEx"></th:block>
+<div class="containerRecipes  px-5 pb-5 pt-3 mt-3 row">
+    <div class="col-6">
+        <h3 class="newestTitle pl-3 pt-3 mb-3" th:text="${'Add food for your ' + meal}"></h3>
+        <form th:action="@{'/food/search/{meal}' (meal=${meal})}" method="GET">
+            <div class="container d-flex justify-content-start">
+
+                <div class="input-group mb-3 w-50 mt-3"><input type="text" class="searchControl form-control input-text"
+                                                               name="searchInput" autocomplete="off"
+                                                               placeholder="Search food...."
+                                                               aria-label="searchI" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-warning btn-lg py-0" type="submit"><i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </form>
+        <div th:if="${foodSearchList != null && foodSearchList.size()>0}">
+            <p th:each="foodItem : ${foodSearchList}" class="card-text authorInf pl-1">
+                <a
+                   class="foodLink card-text authorInf pl-1 d-inline authorA" th:text="${foodItem}"></a>
+
+            </p>
+        </div>
+    </div>
+    <div id="foodDetailContainer" style="display: none" class="col-6">
+
+    </div>
+</div>
+
+<th:block th:replace="fragments/parts.html :: footer"></th:block>
+<script type="text/javascript" th:src="@{/add-food.js}"></script>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<img th:src="${foodDetail.getFoodImage()}" alt="">
+<div th:text="${foodDetail.getFoodName()}"></div>
+<div th:text="${foodDetail.getCalories() + ' kcal'}"></div>
+<div th:text="${ 'Protein (gr): ' + foodDetail.getProteinGrams()}"></div>
+<div th:text="${ 'Fat (gr): ' + foodDetail.getFatGrams()}"></div>
+<div th:text="${ 'Carbs (gr): ' + foodDetail.getCarbGrams()}"></div>
+<div th:text="${ 'Fiber (gr): ' + foodDetail.getFiberGrams()}"></div>
+<div class="d-flex mb-3">
+    <div>Enter quantity</div>
+    <input type="number" name="ingredientQuantities" class="form-control m-input mr-2" min="0"
+           required>
+    <select name="ingredientMeasurements" class="form-control mr-2" required>
+
+        <option
+                th:each="measurement : ${foodDetail.getMeasures()}"
+                th:value="${measurement}"
+                th:text="${measurement}">
+        </option>
+    </select>
+</div>
+<div>
+    <a th:href="@{'/food/saveFood/{foodId}' (foodId=${foodDetail.getFoodId()})}" class="btn addBtn rounded-0">ADD FOOD</a>
+</div>
+
