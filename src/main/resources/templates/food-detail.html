@@ -4,7 +4,7 @@
     </div>
     <div class="col-6">
         <div th:text="${foodDetail.getFoodName()}" class="ml-0 py-1 foodTitleContainer"></div>
-        <div th:text="${foodDetail.getCalories() + ' kcal'}" class="kcalText mb-3"></div>
+        <div th:text="${foodDetail.getCalories() + ' kcal / serving'}" class="kcalText mb-3"></div>
         <div class="nutrientsInfoText">
             <div th:text="${ 'Protein (gr): ' + foodDetail.getProteinGrams()}"></div>
             <div th:text="${ 'Fat (gr): ' + foodDetail.getFatGrams()}"></div>

@@ -14,7 +14,8 @@ public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private MealEnum name;
     private Double caloriesInMeal;
     @ManyToOne
     private LoggedDay loggedDay;
@@ -23,7 +24,7 @@ public class Meal {
 
     public Meal(){}
 
-    public Meal(Long id, String name, Double caloriesInMeal, LoggedDay loggedDay, List<Ingredient> ingredientList) {
+    public Meal(Long id, MealEnum name, Double caloriesInMeal, LoggedDay loggedDay, List<Ingredient> ingredientList) {
         this.id = id;
         this.name = name;
         this.caloriesInMeal = caloriesInMeal;

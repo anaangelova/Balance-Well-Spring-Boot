@@ -1,6 +1,5 @@
 package com.example.balancewellspringboot.model.dto;
 
-import com.example.balancewellspringboot.model.Measurement;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,5 +12,8 @@ public class IngredientDTO {
     private Double caloriesInIngredient;
     public String getFormatted(){
         return String.format("%.0f %s %s",this.quantity,this.measurement,this.name);
+    }
+    public int getCalories() {
+        return (int) Math.round(caloriesInIngredient);
     }
 }

@@ -54,7 +54,7 @@ public class FoodServiceImplementation implements FoodService {
         EdamamParsedDTO parsed = foodDTO.getIngredients().get(0).getParsed().get(0);
 
         LoggedDay loggedDay = loggedDayRepository.findByEndUser_UsernameAndDateForDay(currentUser, LocalDate.parse(date)).orElseThrow();
-        Meal mealForIngredient = loggedDay.getAllMealsForDay().stream().filter(m -> m.getName().equalsIgnoreCase(meal)).findFirst().get();
+        Meal mealForIngredient = loggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().get();
 
         Ingredient ingredient = Ingredient
                 .builder()

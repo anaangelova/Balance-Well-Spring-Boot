@@ -17,10 +17,7 @@ import org.springframework.util.StringUtils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,34 +41,33 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
         EndUser currentUser = (EndUser) endUserService.loadUserByUsername(username);
         Profile currentProfileForUser = profileRepository.getLatestProfileForUsername(username);
 
-        return loggedDayRepository.findByEndUser_UsernameAndDateForDay(username,date)
+        return loggedDayRepository.findByEndUser_UsernameAndDateForDay(username, date)
                 .orElseGet(() -> {
-                   LoggedDay created = LoggedDay.builder()
-                           .dateForDay(date)
-                           .endUser(currentUser)
-                           .targetCalories(currentProfileForUser.getTotalCaloriesPerDay())
-                           .totalCalories(0L)
-                           .allMealsForDay(new ArrayList<>())
-                           .build()
-                           ;
-                  loggedDayRepository.save(created);
-                  created.setAllMealsForDay(initializeMealList(created));
-                  loggedDayRepository.save(created);
-                  return created;
+                    LoggedDay created = LoggedDay.builder()
+                            .dateForDay(date)
+                            .endUser(currentUser)
+                            .targetCalories(currentProfileForUser.getTotalCaloriesPerDay())
+                            .totalCalories(0L)
+                            .allMealsForDay(new ArrayList<>())
+                            .build();
+                    loggedDayRepository.save(created);
+                    created.setAllMealsForDay(initializeMealList(created));
+                    loggedDayRepository.save(created);
+                    return created;
                 });
 
     }
 
     @Transactional
     List<Meal> initializeMealList(LoggedDay loggedDay) {
-      List<Meal> newMeals = Arrays.stream(MealEnum.values()).map(m -> Meal.builder()
+        List<Meal> newMeals = Arrays.stream(MealEnum.values()).map(m -> Meal.builder()
                 .ingredientList(new ArrayList<>())
-                .name(m.toString())
+                .name(m)
                 .caloriesInMeal(0.0)
                 .loggedDay(loggedDay)
                 .build()).collect(Collectors.toList());
-      mealRepository.saveAll(newMeals);
-      return newMeals;
+        mealRepository.saveAll(newMeals);
+        return newMeals;
     }
 
     @Override
@@ -89,17 +85,19 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
 
     private String formatDate(LocalDate dateForDay) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd LLL yyyy", Locale.ENGLISH);
-        return  dateForDay.format(formatter);
+        return dateForDay.format(formatter);
     }
 
     private List<MealDTO> getMealList(List<Meal> allMealsForDay) {
-        return allMealsForDay.stream().map(m ->
-                MealDTO.builder()
-                        .name(StringUtils.capitalize(m.getName().toLowerCase()))
-                        .caloriesInMeal(m.getCaloriesInMeal().intValue())
-                        .ingredientList(getIngredientList(m.getIngredientList()))
-                        .build()
-        ).collect(Collectors.toList());
+        return allMealsForDay.stream()
+                .sorted(Comparator.comparing(meal -> meal.getName().ordinal()))
+                .map(m ->
+                        MealDTO.builder()
+                                .name(StringUtils.capitalize(m.getName().name().toLowerCase()))
+                                .caloriesInMeal(m.getCaloriesInMeal().intValue())
+                                .ingredientList(getIngredientList(m.getIngredientList()))
+                                .build())
+                .collect(Collectors.toList());
     }
 
     private List<IngredientDTO> getIngredientList(List<Ingredient> ingredientList) {
