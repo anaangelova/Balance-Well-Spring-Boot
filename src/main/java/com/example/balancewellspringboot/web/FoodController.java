@@ -1,29 +1,18 @@
 package com.example.balancewellspringboot.web;
 
-import com.example.balancewellspringboot.model.Ingredient;
 import com.example.balancewellspringboot.model.dto.AddFoodDTO;
 import com.example.balancewellspringboot.model.dto.FoodDetailDTO;
+import com.example.balancewellspringboot.model.dto.IngredientDTO;
 import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamFoodDetailResponseDTO;
-import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamFoodQuantityMeasureDTO;
 import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamIngredientDTO;
-import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamIngredientDataDTO;
 import com.example.balancewellspringboot.service.interfaces.FoodService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import org.apache.commons.httpclient.util.URIUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -46,75 +35,63 @@ public class FoodController {
 
     @GetMapping("/search/{date}/{meal}")
     public String searchForResults(@RequestParam String searchInput, @PathVariable String date, @PathVariable String meal, Model model) throws IOException, InterruptedException {
-        String uri = URIUtil.encodeQuery("https://api.edamam.com/auto-complete?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6&q=" + searchInput  + "&limit=10");
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(uri))
-                .header("Accept", "application/json")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
-        Gson gson = new GsonBuilder().create();
-        Type foodListType = new TypeToken<ArrayList<String>>(){}.getType();
-        List<String> foodSearchList = gson.fromJson(response.body(), foodListType);
+        List<String> foodSearchList = foodService.searchForIngredientsFromSearchField(searchInput, date, meal);
 
         model.addAttribute("foodSearchList", foodSearchList);
         model.addAttribute("meal",meal);
         model.addAttribute("date",date);
+
         return "add-food";
     }
 
     @GetMapping("/getDetails/{date}/{meal}/{food}")
-    public String getDetailsForFood(@PathVariable String date, @PathVariable String meal, @PathVariable String food, Model model) throws IOException, InterruptedException {
-        String uri = URIUtil.encodeQuery("https://api.edamam.com/api/food-database/v2/parser?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6&ingr="+ food + "&nutrition-type=cooking");
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(uri))
-                .header("Accept", "application/json")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
-        Gson gson = new GsonBuilder().create();
-        EdamamIngredientDTO edamamIngredientDTO = gson.fromJson(response.body(), EdamamIngredientDTO.class);
+    public String getDetailsForFood(@PathVariable String date, @PathVariable String meal, @PathVariable(name = "food") String foodName, Model model) throws IOException, InterruptedException {
+        EdamamIngredientDTO edamamIngredientDTO = foodService.getDetailsDTOForSelectedIngredient(date, meal, foodName);
         FoodDetailDTO foodDetailDTO = foodService.getFoodDetailDTO(edamamIngredientDTO);
 
         model.addAttribute("foodDetail", foodDetailDTO);
         model.addAttribute("date", date);
         model.addAttribute("meal", meal);
+
         return "food-detail";
     }
 
-    @PostMapping("/saveFood/{date}/{meal}/{foodId}")
-    public String saveFood(@PathVariable String date, @PathVariable String meal,@PathVariable String foodId, AddFoodDTO addFoodDTO, HttpServletRequest httpServletRequest, Model model) throws IOException, InterruptedException {
-        String uri = URIUtil.encodeQuery("https://api.edamam.com/api/food-database/v2/nutrients?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6");
-        EdamamIngredientDataDTO ingrData = EdamamIngredientDataDTO
-                .builder()
-                .foodId(foodId)
-                .measureURI(addFoodDTO.getIngredientMeasurements())
-                .quantity(addFoodDTO.getIngredientQuantities())
-                .build();
-        EdamamFoodQuantityMeasureDTO dto = EdamamFoodQuantityMeasureDTO
-                .builder()
-                .ingredients(List.of(ingrData))
-                .build();
-        Gson gson = new GsonBuilder().create();
+    @PostMapping("/saveFood/{date}/{meal}/{foodId}/{foodName}")
+    public String saveFood(@PathVariable String date, @PathVariable String meal,@PathVariable String foodId, @PathVariable String foodName, AddFoodDTO addFoodDTO, HttpServletRequest httpServletRequest) throws IOException, InterruptedException {
+        EdamamFoodDetailResponseDTO edamamFoodDetailResponseDTO = foodService.saveSelectedIngredient(date, meal, foodId, addFoodDTO);
+        foodService.createIngredient(edamamFoodDetailResponseDTO, foodName, date, httpServletRequest.getRemoteUser(), meal);
 
+        return "redirect:/home"; // da vrakja na denot
+    }
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(uri))
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .method("POST", HttpRequest.BodyPublishers.ofString(gson.toJson(dto)))
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    @GetMapping("/edit/{date}/{meal}/{foodName}/{ingrId}")
+    public String getEditFood(@PathVariable String date, @PathVariable String meal, @PathVariable String foodName, @PathVariable String ingrId, Model model, HttpServletRequest httpServletRequest) throws IOException, InterruptedException {
+        IngredientDTO ingredientDTO = foodService.getIngredientDTO(httpServletRequest.getRemoteUser(), LocalDate.parse(date), meal, ingrId);
+        EdamamIngredientDTO edamamIngredientDTO = foodService.getDetailsDTOForSelectedIngredient(date, meal, foodName);
+        FoodDetailDTO foodDetailDTO = foodService.getFoodDetailDTO(edamamIngredientDTO);
 
-        EdamamFoodDetailResponseDTO edamamFoodDetailResponseDTO = gson.fromJson(response.body(), EdamamFoodDetailResponseDTO.class);
+        model.addAttribute("ingredientInfo", ingredientDTO);
+        model.addAttribute("foodDetail", foodDetailDTO);
+        model.addAttribute("date", date);
+        model.addAttribute("meal", meal);
 
+        return "edit-food";
+
+    }
+
+    @PostMapping("/editFood/{date}/{meal}/{foodId}/{ingrId}")
+    public String editFoodPostMapping(@PathVariable String date, @PathVariable String meal,@PathVariable String foodId, @PathVariable String ingrId, AddFoodDTO addFoodDTO, HttpServletRequest httpServletRequest) throws IOException, InterruptedException {
+        EdamamFoodDetailResponseDTO edamamFoodDetailResponseDTO = foodService.saveSelectedIngredient(date, meal, foodId, addFoodDTO);
         String currentUser = httpServletRequest.getRemoteUser();
 
-        foodService.createIngredient(edamamFoodDetailResponseDTO, date, currentUser, meal);
+        foodService.editIngredient(edamamFoodDetailResponseDTO, date, currentUser, meal, ingrId);
 
+        return "redirect:/home";
+    }
+
+    @DeleteMapping("/delete/{ingrId}/{date}/{meal}")
+    public String deleteIngredient(@PathVariable String ingrId, @PathVariable String date, @PathVariable String meal, HttpServletRequest httpServletRequest) {
+        foodService.deleteIngredientById(ingrId,httpServletRequest.getRemoteUser(), LocalDate.parse(date), meal);
         return "redirect:/home";
     }
 }

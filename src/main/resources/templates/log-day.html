@@ -18,6 +18,10 @@
             <div th:each="ingr : ${meal.getIngredientList()}">
                 <div th:text="${ingr.getFormatted()}" class="authorInf d-inline"></div>
                 <span th:text="${' (' + ingr.getCalories() + 'kcal)'}" class="caloriesInfoSpan"></span>
+                <a th:href="@{'/food/edit/{date}/{meal}/{foodName}/{ingrId}' (date=${localDate}, meal=${meal.getName()}, foodName=${ingr.getName()}, ingrId=${ingr.getIngredientId()})}"
+                   class="btn rounded-pill btnEdit"><i class="fa-solid fa-pen"></i></a>
+                <button type="submit" class="btn rounded-pill btnDelete open-AddBookDialog" data-toggle="modal" data-th-id="${ingr.getIngredientId()}" data-th-date="${localDate}" data-th-meal="${meal.getName()}" data-target="#exampleModalCenter"><i
+                        class="fa fa-trash"></i></button>
             </div>
         </div>
         <div th:if="${meal.getIngredientList().size()<=0}">
@@ -25,7 +29,7 @@
         </div>
         <div>
             <a th:href="@{'/food/addFood/{date}/{meal}' (date=${localDate}, meal=${meal.getName()})}"
-               class="btn addBtn rounded-0 mt-1">ADD FOOD</a>
+               class="btn addBtn rounded-0 mt-1 ">ADD FOOD</a>
         </div>
     </details>
 </div>

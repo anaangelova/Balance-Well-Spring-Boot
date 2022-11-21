@@ -33,6 +33,6 @@ public class Meal {
     }
 
     public void updateCaloriesInMeal() {
-        ingredientList.forEach(i -> caloriesInMeal = caloriesInMeal + i.getCaloriesInIngredient());
+        caloriesInMeal = ingredientList.stream().map(Ingredient::getCaloriesInIngredient).reduce(0.0, (a, b) -> a + b);
     }
 }

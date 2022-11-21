@@ -906,22 +906,20 @@ body {
 
 .btnDelete{
   background-color: transparent;
-  border: 2px solid darkred;
+  border: none;
   color: darkred;
 }
 .btnDelete:hover{
   background-color: darkred;
-  border: 2px solid darkred;
   color: white;
 }
 .btnEdit{
   background-color: transparent;
-  border: 2px solid darkgreen;
+  border: none;
   color: darkgreen;
 }
 .btnEdit:hover{
   background-color: darkgreen;
-  border: 2px solid darkgreen;
   color: white;
 }
 
@@ -1127,7 +1125,7 @@ details summary:after {
   line-height: 0;
   margin-top: 0.75rem;
   top: 0;
-  bottom 0;
+  bottom: 0;
   right: 0;
   font-weight: 200;
   transform-origin: center;

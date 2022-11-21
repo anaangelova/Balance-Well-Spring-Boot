@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<form th:action="@{'/food/saveFood/{date}/{meal}/{foodId}' ( date=${date}, meal=${meal}, foodId=${foodDetail.getFoodId()})}" method="POST">
+<form th:action="@{'/food/saveFood/{date}/{meal}/{foodId}/{foodName}' ( date=${date}, meal=${meal}, foodId=${foodDetail.getFoodId()}, foodName=${foodDetail.getFoodName()})}" method="POST">
     <div class="row mt-4">
         <div class="col-12 d-flex mb-3 px-5">
 

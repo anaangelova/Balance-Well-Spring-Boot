@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/parts.html :: headerfiles">
+
+</head>
+<body>
+<th:block th:replace="fragments/parts.html :: headerEx"></th:block>
+<div class="containerRecipes px-5 pb-5 pt-3 mt-3 ">
+    <div class="container d-flex justify-content-center my-3">
+        <div class="mr-3">
+            <img th:src="${foodDetail.getFoodImage()}" alt="">
+        </div>
+        <div>
+            <div th:text="${foodDetail.getFoodName()}" class="ml-0 py-1 foodTitleContainer"></div>
+            <div th:text="${foodDetail.getCalories() + ' kcal / serving'}" class="kcalText mb-3"></div>
+            <div class="nutrientsInfoText">
+                <div th:text="${ 'Protein (gr): ' + foodDetail.getProteinGrams()}"></div>
+                <div th:text="${ 'Fat (gr): ' + foodDetail.getFatGrams()}"></div>
+                <div th:text="${ 'Carbs (gr): ' + foodDetail.getCarbGrams()}"></div>
+                <div th:text="${ 'Fiber (gr): ' + foodDetail.getFiberGrams()}"></div>
+            </div>
+        </div>
+    </div>
+    <form th:action="@{'/food/editFood/{date}/{meal}/{foodId}/{ingrId}' ( date=${date}, meal=${meal}, foodId=${foodDetail.getFoodId()}, ingrId=${ingredientInfo.getIngredientId()})}" method="POST">
+
+            <div class="d-flex justify-content-center mb-1 px-5">
+
+                <input type="number" name="ingredientQuantities" class="form-control m-input mr-2 w-25" min="0"
+                       placeholder="Enter quantity"
+                       th:value="${ingredientInfo.getQuantity()}"
+                       required>
+                <select name="ingredientMeasurements" class="form-control mr-2 w-25" required>
+
+                    <option
+                            th:each="measurement : ${foodDetail.getMeasures()}"
+                            th:value="${measurement}"
+                            th:selected="${ingredientInfo.getMeasurement() != null && ingredientInfo.getMeasurement().equalsIgnoreCase(measurement)}"
+                            th:text="${measurement}">
+                    </option>
+                </select>
+            </div>
+
+        <div>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <button type="submit"
+                            class="btn formBtnSave mt-2 d-block round-0 px-5">EDIT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<th:block th:replace="fragments/parts.html :: footer"></th:block>
+<script type="text/javascript" th:src="@{/home.js}"></script>
+</body>
+</html>

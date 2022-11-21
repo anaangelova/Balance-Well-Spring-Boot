@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class IngredientDTO {
     private String name;
+    private String foodIdApi;
+    private Long ingredientId;
     private Double quantity;
     private String measurement;
     private Double caloriesInIngredient;

@@ -2,6 +2,7 @@ package com.example.balancewellspringboot.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Builder
 @Getter
+@Setter
 public class Ingredient {
 
     @Id

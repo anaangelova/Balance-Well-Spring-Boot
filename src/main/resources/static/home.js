@@ -35,4 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    $(document).on("click", ".open-AddBookDialog", function () {
+        var ingredientId = $(this).attr('id');
+        var date = $(this).attr('date');
+        var meal = $(this).attr('meal');
+        var path='/food/delete/' + ingredientId + '/' + date + '/' + meal;
+        $(".formDel").attr('action',String(path));
+
+    });
 });

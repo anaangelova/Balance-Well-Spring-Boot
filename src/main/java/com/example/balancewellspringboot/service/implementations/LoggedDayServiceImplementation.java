@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -83,6 +82,11 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
                 .build();
     }
 
+    @Override
+    public LoggedDay saveLoggedDay(LoggedDay loggedDay) {
+        return loggedDayRepository.save(loggedDay);
+    }
+
     private String formatDate(LocalDate dateForDay) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd LLL yyyy", Locale.ENGLISH);
         return dateForDay.format(formatter);
@@ -104,6 +108,8 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
         return ingredientList.stream().map(i ->
                 IngredientDTO.builder()
                         .name(i.getName())
+                        .foodIdApi(i.getFoodIdApi())
+                        .ingredientId(i.getId())
                         .caloriesInIngredient(i.getCaloriesInIngredient())
                         .measurement(i.getMeasurement())
                         .quantity(i.getQuantity())
