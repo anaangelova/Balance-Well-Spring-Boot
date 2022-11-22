@@ -1,5 +1,8 @@
 package com.example.balancewellspringboot.model;
 
+import com.example.balancewellspringboot.model.enums.Activity;
+import com.example.balancewellspringboot.model.enums.Goal;
+import com.example.balancewellspringboot.model.enums.Sex;
 import com.example.balancewellspringboot.model.identity.EndUser;
 import lombok.Builder;
 import lombok.Getter;

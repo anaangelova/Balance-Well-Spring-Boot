@@ -1,4 +1,4 @@
-package com.example.balancewellspringboot.model;
+package com.example.balancewellspringboot.model.enums;
 
 public enum Activity {
     SEDENTARY("Sedentary", 1.2),

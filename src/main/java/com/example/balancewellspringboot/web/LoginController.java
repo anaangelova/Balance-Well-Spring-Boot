@@ -26,7 +26,7 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(HttpServletRequest request, Model model){ // dali se koriste???
+    public String login(HttpServletRequest request, Model model){
         EndUser user;
         try{
             user = authService.login(request.getParameter("username"),request.getParameter("password"));

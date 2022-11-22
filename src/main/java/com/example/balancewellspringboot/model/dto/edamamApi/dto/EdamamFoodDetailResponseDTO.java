@@ -9,6 +9,6 @@ import java.util.List;
 @Builder
 public class EdamamFoodDetailResponseDTO {
     private int calories;
-    private EdamamTotalNutrientsDTO totalNutrients; // TODO save them in the model as well
+    private EdamamTotalNutrientsDTO totalNutrients;
     private List<EdamamIngredientInfoDTO> ingredients;
 }

@@ -4,6 +4,7 @@ import com.example.balancewellspringboot.model.*;
 import com.example.balancewellspringboot.model.dto.IngredientDTO;
 import com.example.balancewellspringboot.model.dto.LoggedDayDTO;
 import com.example.balancewellspringboot.model.dto.MealDTO;
+import com.example.balancewellspringboot.model.enums.MealEnum;
 import com.example.balancewellspringboot.model.identity.EndUser;
 import com.example.balancewellspringboot.repository.LoggedDayRepository;
 import com.example.balancewellspringboot.repository.MealRepository;

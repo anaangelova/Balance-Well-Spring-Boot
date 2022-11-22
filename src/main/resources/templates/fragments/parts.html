@@ -38,7 +38,7 @@
 </head>
 <body>
 <div th:fragment="headerEx">
-    <nav class="navbar navbar-expand-lg  navigation p-0 navbar-light mb-3">
+    <nav class="navbar navbar-expand-lg  navigation p-0 navbar-light mb-3" >
         <a class="navbar-brand brand ml-5" href="/home">
             <div class="row">
                 <div class="col-4 mr-0 pr-0">
@@ -48,12 +48,21 @@
                         <img src="/images/orange-slice.png" alt="desc">
                     </picture>
                 </div>
-                <div class="col-8 mr-0 pr-0 pl-0 pt-3 desktop-view">
+                <div class="col-8 mr-0 pr-0 pl-0 pt-3 desktop-view" th:if="${#request.getRemoteUser() != null}">
                     <div class="row add">
                         <div class="col-12 title pl-4 ml-1">Balance Well:</div>
                     </div>
                     <div class="row add">
                         <div class="col-12 titleSec pl-4 ml-3">The Wellness App</div>
+
+                    </div>
+                </div>
+                <div class="col-8 mr-0 pr-0 pl-0 pt-3 desktop-view" th:if="${#request.getRemoteUser() == null}">
+                    <div class="row add">
+                        <div class="col-12 title ml-1">Balance Well:</div>
+                    </div>
+                    <div class="row add">
+                        <div class="col-12 titleSec ml-3">The Wellness App</div>
 
                     </div>
                 </div>

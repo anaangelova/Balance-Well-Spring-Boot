@@ -3,6 +3,8 @@ package com.example.balancewellspringboot.service.implementations;
 import com.example.balancewellspringboot.model.*;
 import com.example.balancewellspringboot.model.dto.RecipeAddToMealDTO;
 import com.example.balancewellspringboot.model.dto.RecipeDTO;
+import com.example.balancewellspringboot.model.enums.MealEnum;
+import com.example.balancewellspringboot.model.enums.RecipeIngredientMeasurement;
 import com.example.balancewellspringboot.model.exceptions.RecipeNotFoundException;
 import com.example.balancewellspringboot.model.identity.EndUser;
 import com.example.balancewellspringboot.repository.*;
@@ -15,19 +17,18 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class RecipeServiceImplementation implements RecipeService {
     private final RecipeRepository recipeRepository;
-    private final EndUserRepository endUserRepository;
     private final RecipeIngredientRepository recipeIngredientRepository;
     private final RecipeInstructionRepository recipeInstructionRepository;
     private final RecipeImageRepository recipeImageRepository;
     private final EndUserService endUserService;
 
-    public RecipeServiceImplementation(RecipeRepository recipeRepository, EndUserRepository endUserRepository, RecipeIngredientRepository recipeIngredientRepository, RecipeInstructionRepository recipeInstructionRepository, RecipeImageRepository recipeImageRepository, EndUserService endUserService) {
+    public RecipeServiceImplementation(RecipeRepository recipeRepository, RecipeIngredientRepository recipeIngredientRepository, RecipeInstructionRepository recipeInstructionRepository, RecipeImageRepository recipeImageRepository, EndUserService endUserService) {
         this.recipeRepository = recipeRepository;
-        this.endUserRepository = endUserRepository;
         this.recipeIngredientRepository = recipeIngredientRepository;
         this.recipeInstructionRepository = recipeInstructionRepository;
         this.recipeImageRepository = recipeImageRepository;
@@ -85,7 +86,7 @@ public class RecipeServiceImplementation implements RecipeService {
         List<RecipeInstruction> instructionsToAdd = getInstructions(recipeDTO, addedRecipe);
         recipeInstructionRepository.saveAll(instructionsToAdd);
 
-        addedRecipe.setInstructions(instructionsToAdd); // ???
+        addedRecipe.setInstructions(instructionsToAdd);
 
         //images
         List<RecipeImage> imagesToAdd = new ArrayList<>();
@@ -106,7 +107,7 @@ public class RecipeServiceImplementation implements RecipeService {
     @Override
     public Optional<Recipe> editRecipe(RecipeDTO recipeDTO, Long recipeId) {
         Recipe recipeToAdd = this.findById(recipeId);
-        recipeToAdd.setMeal(Arrays.stream(MealEnum.values()).filter(m -> m.name().equalsIgnoreCase(recipeDTO.getMeal())).findFirst().get());
+        recipeToAdd.setMeal(Arrays.stream(MealEnum.values()).filter(m -> m.name().equalsIgnoreCase(recipeDTO.getMeal())).findFirst().orElseThrow());
 
 
         recipeToAdd.setTitle(recipeDTO.getTitle());
@@ -163,9 +164,9 @@ public class RecipeServiceImplementation implements RecipeService {
         List<String> names = recipeDTO.getIngredientNames();
         List<Double> quantities = recipeDTO.getIngredientQuantities();
         List<RecipeIngredientMeasurement> measurements = recipeDTO.getIngredientMeasurements();
-        for (int i = 0; i < names.size(); i++) {
-            ingredients.add(new RecipeIngredient(names.get(i), quantities.get(i), measurements.get(i),recipeToAdd));
-        }
+
+        IntStream.range(0, names.size()).forEach(i -> ingredients.add(new RecipeIngredient(names.get(i), quantities.get(i), measurements.get(i),recipeToAdd)));
+
         return ingredients;
     }
 

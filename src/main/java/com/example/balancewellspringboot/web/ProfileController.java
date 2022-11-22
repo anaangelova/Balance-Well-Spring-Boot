@@ -1,7 +1,7 @@
 package com.example.balancewellspringboot.web;
 
-import com.example.balancewellspringboot.model.Activity;
-import com.example.balancewellspringboot.model.Goal;
+import com.example.balancewellspringboot.model.enums.Activity;
+import com.example.balancewellspringboot.model.enums.Goal;
 import com.example.balancewellspringboot.model.Profile;
 import com.example.balancewellspringboot.model.dto.ProfileDTO;
 import com.example.balancewellspringboot.service.interfaces.ProfileService;

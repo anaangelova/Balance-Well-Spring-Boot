@@ -1,7 +1,5 @@
 package com.example.balancewellspringboot.web.rest;
 
-import com.example.balancewellspringboot.model.LoggedDay;
-import com.example.balancewellspringboot.model.dto.LoggedDayDTO;
 import com.example.balancewellspringboot.service.interfaces.LoggedDayService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 @RestController

@@ -1,8 +1,8 @@
 package com.example.balancewellspringboot.web;
 
-import com.example.balancewellspringboot.model.MealEnum;
+import com.example.balancewellspringboot.model.enums.MealEnum;
 import com.example.balancewellspringboot.model.Recipe;
-import com.example.balancewellspringboot.model.RecipeIngredientMeasurement;
+import com.example.balancewellspringboot.model.enums.RecipeIngredientMeasurement;
 import com.example.balancewellspringboot.model.dto.*;
 import com.example.balancewellspringboot.model.identity.EndUser;
 import com.example.balancewellspringboot.service.interfaces.EndUserService;
@@ -78,7 +78,7 @@ public class RecipeController {
         List<Recipe> recipes = recipeService.findBySearch(searchInput);
         model.addAttribute("recipes", recipes);
         model.addAttribute("val", searchInput);
-        return "recipes-category"; //TODO
+        return "recipes-category";
     }
 
     @GetMapping("/myRecipes/{id}")

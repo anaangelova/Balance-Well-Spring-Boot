@@ -1,4 +1,4 @@
-package com.example.balancewellspringboot.model;
+package com.example.balancewellspringboot.model.enums;
 
 public enum Goal {
     WEIGHT_LOSS("Weight loss"),

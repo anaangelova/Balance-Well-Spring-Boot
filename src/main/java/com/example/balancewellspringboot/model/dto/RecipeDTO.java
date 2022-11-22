@@ -1,6 +1,6 @@
 package com.example.balancewellspringboot.model.dto;
 
-import com.example.balancewellspringboot.model.RecipeIngredientMeasurement;
+import com.example.balancewellspringboot.model.enums.RecipeIngredientMeasurement;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

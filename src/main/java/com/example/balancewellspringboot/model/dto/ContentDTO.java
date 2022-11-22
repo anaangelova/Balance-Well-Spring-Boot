@@ -1,6 +1,6 @@
 package com.example.balancewellspringboot.model.dto;
 
-import com.example.balancewellspringboot.model.MealEnum;
+import com.example.balancewellspringboot.model.enums.MealEnum;
 import lombok.Data;
 
 import java.util.List;

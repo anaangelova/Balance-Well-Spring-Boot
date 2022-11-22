@@ -1,4 +1,4 @@
-package com.example.balancewellspringboot.model;
+package com.example.balancewellspringboot.model.enums;
 
 public enum RecipeIngredientMeasurement {
     grams,

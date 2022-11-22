@@ -67,7 +67,7 @@ public class FoodServiceImplementation implements FoodService {
                 .measures(
                         edamamIngredientDTO.getHints().stream()
                                 .filter(h -> h.getFood().getFoodId().equalsIgnoreCase(foodDetailDTO.getFoodId()))
-                                .findFirst().get().getMeasures().stream().map(EdamamMeasuresDTO::getLabel).collect(Collectors.toList())
+                                .findFirst().orElseThrow().getMeasures().stream().map(EdamamMeasuresDTO::getLabel).collect(Collectors.toList())
                 ).build();
 
     }
@@ -75,7 +75,7 @@ public class FoodServiceImplementation implements FoodService {
     @Override
     @Transactional
     public Ingredient createIngredient(EdamamFoodDetailResponseDTO foodDTO, String foodName, String date, String currentUser, String meal) {
-        EdamamParsedDTO parsed = foodDTO.getIngredients().get(0).getParsed().get(0); //
+        EdamamParsedDTO parsed = foodDTO.getIngredients().get(0).getParsed().get(0);
 
         LoggedDay loggedDay = this.getLoggedDay(currentUser, LocalDate.parse(date));
         Meal mealForIngredient = getMeal(loggedDay, meal);
@@ -108,11 +108,11 @@ public class FoodServiceImplementation implements FoodService {
                 .stream()
                 .filter(m -> m.getName().name().equalsIgnoreCase(meal))
                 .findFirst()
-                .get()
+                .orElseThrow()
                 .getIngredientList()
                 .stream().filter(i -> i.getId().equals(Long.valueOf(ingrId)))
                 .findFirst()
-                .get();
+                .orElseThrow();
 
         ingredientToEdit.setCaloriesInIngredient((double) foodDTO.getCalories());
         ingredientToEdit.setMeasurement(parsed.getMeasure());
@@ -142,6 +142,7 @@ public class FoodServiceImplementation implements FoodService {
 
         Type foodListType = new TypeToken<ArrayList<String>>() {
         }.getType();
+
         return gson.fromJson(response.body(), foodListType);
     }
 
@@ -192,11 +193,11 @@ public class FoodServiceImplementation implements FoodService {
                 .stream()
                 .filter(m -> m.getName().name().equalsIgnoreCase(meal))
                 .findFirst()
-                .get()
+                .orElseThrow()
                 .getIngredientList()
                 .stream().filter(i -> i.getId().equals(Long.valueOf(ingrId)))
                 .findFirst()
-                .get();
+                .orElseThrow();
 
         return IngredientDTO
                 .builder()
@@ -230,7 +231,7 @@ public class FoodServiceImplementation implements FoodService {
                 .builder()
                 .name(recipe.getTitle())
                 .foodIdApi(null)
-                .quantity(1.0) // TO DO da se smene
+                .quantity(1.0)
                 .measurement("serving")
                 .caloriesInIngredient(recipeDTO.getCaloriesRecipe())
                 .meal(mealForIngredient)
@@ -244,7 +245,7 @@ public class FoodServiceImplementation implements FoodService {
     }
 
     private static Meal getMeal(LoggedDay loggedDay, String meal) {
-        return loggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().get();
+        return loggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().orElseThrow();
 
     }
 

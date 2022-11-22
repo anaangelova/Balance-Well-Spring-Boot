@@ -44,7 +44,18 @@
                 <div class="row justify-content-start my-2">
             <span class="col-6 prepInfo">
                 <span class="title-subscribe">BMI</span>
-                <span th:text="${profile.getBMI().getValue() + ' ' + profile.getBMI().getRange()}"></span>
+                <span th:if="${profile.getBMI().getValue() < 18.5}"
+                      th:text="${profile.getBMI().getValue() + ' ' + profile.getBMI().getRange()}"
+                      style="color: deepskyblue"
+                ></span>
+                <span th:if="${profile.getBMI().getValue() >= 18.5 && profile.getBMI().getValue() < 24.9}"
+                      th:text="${profile.getBMI().getValue() + ' ' + profile.getBMI().getRange()}"
+                      style="color: green"
+                ></span>
+                <span th:if="${profile.getBMI().getValue() >= 25}"
+                      th:text="${profile.getBMI().getValue() + ' ' + profile.getBMI().getRange()}"
+                      style="color: red"
+                ></span>
             </span>
                     <span class="col-6 prepInfo">
                 <span class="title-subscribe">ACTIVITY</span>

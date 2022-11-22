@@ -1,10 +1,10 @@
 package com.example.balancewellspringboot.model;
 
+import com.example.balancewellspringboot.model.enums.MealEnum;
 import com.example.balancewellspringboot.model.identity.EndUser;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

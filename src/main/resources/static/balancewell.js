@@ -9,9 +9,9 @@ function drawChart() {
         async: false,
         success: function (result) {
             for(var i =0; i<result.length; i++) {
-                var date = new Date(result[i].year, result[i].month, result[i].day);
+                var date = new Date(result[i].year, result[i].month-1, result[i].day);
 
-                rawData.push([date,result[i].weight,createTooltip(result[i].image,date.toDateString(),result[i].weight)]);
+                rawData.push([date,result[i].weight,createTooltip(result[i].image,date.toLocaleString('en-us', {weekday: "long", year: "numeric", month: "short", day: "numeric"}),result[i].weight)]);
             }
         }});
 
@@ -76,7 +76,7 @@ function drawChart() {
     chart.draw(data, options);
 
     function createTooltip(image,date,weight) {
-        return '<div> <img src="' + image + '" style="width:100%;height: 150px"> <br/>' +
-            '<span style="font-size: 12px;"><b>'+date+'</b></span><br/><span style="font-size: 16px;"><b>'+weight+' kgs</b></span> ';
+        return '<div> <img src="' + image + '" style="width:200px;height: 250px"> <br/>' +
+            '<span style="font-size: 18px;"><b>'+date+'</b></span><br/><span style="font-size: 24px; color: midnightblue; padding-left: 4px;"><b>'+weight+' kgs</b></span> ';
     }
 }

@@ -3,6 +3,9 @@ package com.example.balancewellspringboot.service.implementations;
 import com.example.balancewellspringboot.model.*;
 import com.example.balancewellspringboot.model.dto.LineChartDTO;
 import com.example.balancewellspringboot.model.dto.ProfileDTO;
+import com.example.balancewellspringboot.model.enums.Activity;
+import com.example.balancewellspringboot.model.enums.Goal;
+import com.example.balancewellspringboot.model.enums.Sex;
 import com.example.balancewellspringboot.model.exceptions.ProfileDoesNotExist;
 import com.example.balancewellspringboot.model.identity.EndUser;
 import com.example.balancewellspringboot.repository.BMIRepository;
@@ -43,11 +46,11 @@ public class ProfileServiceImplementation implements ProfileService {
         Double height = profileDTO.getHeight();
         Double weight = profileDTO.getWeight();
         Integer age = profileDTO.getAge();
-        Goal goal = Goal.valueOf(profileDTO.getGoal().toUpperCase().replace(" ","_"));
+        Goal goal = Goal.valueOf(profileDTO.getGoal().toUpperCase().replace(" ", "_"));
         Activity activity = Activity.valueOf(profileDTO.getActivity().toUpperCase());
         Sex sex = profileDTO.isSex() ? Sex.MALE : Sex.FEMALE;
         EndUser currentUser = endUserRepository.findByUsername(profileDTO.getEndUser()).orElseThrow();
-        BMI bmi = bmiRepository.save(calculateBMI(height,weight));
+        BMI bmi = bmiRepository.save(calculateBMI(height, weight));
         LocalDateTime now = LocalDateTime.now();
 
         Profile profile = Profile
@@ -62,9 +65,8 @@ public class ProfileServiceImplementation implements ProfileService {
                 .endUser(currentUser)
                 .BMI(bmi)
                 .dateOfCreation(now)
-                .totalCaloriesPerDay(calculateTotalCaloriesPerDay(height, weight,profileDTO.isSex(), age, goal, activity))
-                .build()
-                ;
+                .totalCaloriesPerDay(calculateTotalCaloriesPerDay(height, weight, profileDTO.isSex(), age, goal, activity))
+                .build();
 
         List<Image> imagesToAdd = new ArrayList<>();
         for (String m : imagesNames) {
@@ -104,18 +106,18 @@ public class ProfileServiceImplementation implements ProfileService {
         return profilesForUser.stream().sorted(Comparator.comparing(Profile::getDateOfCreation)).map(p ->
         {
             String image = "/uploads/" + p.getEndUser().getImages().stream().filter(i -> i.getUploadDate().equals(p.getDateOfCreation()))
-                    .findFirst().get().getTitle();
-            //TODO create relation between image and profile entities
+                    .findFirst().orElseThrow().getTitle();
+
 
             return new LineChartDTO(p.getDateOfCreation().getYear(),
-                    p.getDateOfCreation().getMonthValue(),p.getDateOfCreation().getDayOfMonth()
-                    ,p.getWeight(),image);
+                    p.getDateOfCreation().getMonthValue(), p.getDateOfCreation().getDayOfMonth()
+                    , p.getWeight(), image);
 
         }).collect(Collectors.toList());
 
     }
 
-    private long calculateTotalCaloriesPerDay(Double height, Double weight,Boolean sex, Integer age, Goal goal, Activity activity) {
+    private long calculateTotalCaloriesPerDay(Double height, Double weight, Boolean sex, Integer age, Goal goal, Activity activity) {
         Double BMR;
         if (sex) { // M
             BMR = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
@@ -123,20 +125,20 @@ public class ProfileServiceImplementation implements ProfileService {
             BMR = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
         }
 
-        if(goal.equals(Goal.WEIGHT_LOSS))
+        if (goal.equals(Goal.WEIGHT_LOSS))
             return Math.round(BMR * 0.9 * activity.getFactor());
-        else if(goal.equals(Goal.MUSCLE_GAIN))
+        else if (goal.equals(Goal.MUSCLE_GAIN))
             return Math.round((BMR * 1.1) * activity.getFactor());
         else
             return Math.round(BMR * activity.getFactor());
     }
 
-    private BMI calculateBMI(Double height, Double weight){
+    private BMI calculateBMI(Double height, Double weight) {
         BMI bmi = new BMI();
         Double bmiValue = BigDecimal.valueOf((weight / (height * height)) * 10000).setScale(2, RoundingMode.CEILING).doubleValue();
         bmi.setValue(bmiValue);
 
-        if(bmiValue < 18.5) bmi.setRange("UNDERWEIGHT");
+        if (bmiValue < 18.5) bmi.setRange("UNDERWEIGHT");
         else if (bmiValue >= 18.5 && bmiValue < 24.9) bmi.setRange("NORMAL");
         else if (bmiValue >= 24.9 && bmiValue < 29.9) bmi.setRange("OVERWEIGHT");
         else bmi.setRange("OBESE");

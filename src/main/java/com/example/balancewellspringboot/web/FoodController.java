@@ -61,7 +61,7 @@ public class FoodController {
         EdamamFoodDetailResponseDTO edamamFoodDetailResponseDTO = foodService.saveSelectedIngredient(date, meal, foodId, addFoodDTO);
         foodService.createIngredient(edamamFoodDetailResponseDTO, foodName, date, httpServletRequest.getRemoteUser(), meal);
 
-        return "redirect:/home"; // da vrakja na denot
+        return "redirect:/home";
     }
 
     @GetMapping("/edit/{date}/{meal}/{foodName}/{ingrId}")
