@@ -44,4 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         $(".formDel").attr('action',String(path));
 
     });
+
+    if(subscribed) {
+        $('#myModal').modal('show');
+    }
 });

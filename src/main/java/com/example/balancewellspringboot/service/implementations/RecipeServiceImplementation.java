@@ -139,8 +139,15 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public List<Recipe> findBySearch(String search) {
-        //TODO
-        return null;
+        Set<Recipe> resultList = new HashSet<>();
+        Arrays.stream(MealEnum.values()).forEach(m -> {
+            if (search.toLowerCase().contains(m.toString().toLowerCase())) {
+                resultList.addAll(recipeRepository.findAllByMeal(m).orElse(new ArrayList<>()));
+            }
+        });
+        resultList.addAll(recipeRepository.findByTitleContainingIgnoreCase(search).orElse(new ArrayList<>()));
+
+        return resultList.stream().toList();
     }
 
     @Override

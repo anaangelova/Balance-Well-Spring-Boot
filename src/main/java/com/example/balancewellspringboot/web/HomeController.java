@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -25,9 +26,11 @@ public class HomeController {
     }
 
     @GetMapping
-    public String getHomePage(Model model, HttpServletRequest request){
+    public String getHomePage(@RequestParam(required = false) boolean subscribed,
+                              Model model, HttpServletRequest request){
         EndUser endUser=(EndUser) endUserService.loadUserByUsername(request.getRemoteUser());
         if(!endUser.getProfilesForUser().isEmpty()) {
+            if(subscribed) model.addAttribute("subscribed",true);
             return "home";
         } else {
             model.addAttribute("goals", getGoals());
