@@ -3,60 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap');
 
 @media all and (min-width: 992px) {
-  .navbar .dropdown-menu-end {
-    right: 0;
-    left: auto;
-  }
-
-  .navbar .nav-item .dropdown-menu {
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
-    margin-top: 0;
-  }
 
   .navbar .nav-item:hover .nav-link {
     color: rgba(186, 104, 104, 0.69);
   }
 
-  .navbar .dropdown-menu.fade-down {
-    top: 80%;
-    transform-origin: 0% 0%;
-  }
-
-  .navbar .dropdown-menu.fade-up {
-    top: 180%;
-  }
-
-  .navbar .nav-item:hover .dropdown-menu {
-    transition: .3s;
-    opacity: 1;
-    visibility: visible;
-    top: 100%;
-  }
-}
-
-.intro {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  background: #151515 url("images/wallpaper.jpg") no-repeat fixed center bottom;
-  width: 100%;
-  height: 100%;
-  min-height: 720px;
-  display: table;
-  position: relative;
-  text-align: center;
-}
-.intro-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #111111;
-  opacity: .85;
 }
 
 .cat{
@@ -75,12 +26,7 @@
   color: black;
   text-transform: uppercase;
 }
-.my-recipes-text{
-  font-family: 'Xanh Mono', monospace;
-  font-size: 2.7vw;
-  font-weight: bold;
-  color: darkgreen;
-}
+
 .modifiedB{
   background-color: transparent;
   border: none;
@@ -99,10 +45,6 @@
   width: 100%;
 }
 
-.divCont{
-  width: 50%;
-  height: 100%;
-}
 .imageLogin{
   max-height: 100%;
   max-width: 100%;
@@ -134,12 +76,6 @@ body {
 }
 
 
-.login-item {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.6vw;
-
-
-}
 .inputLogin{
   height: 3.6vw;
 
@@ -364,13 +300,6 @@ body {
   border: none;
 }
 
-.dd-list2 {
-  background-color: #fefefa;
-  border: none;
-  font-size: 2vw;
-  width: 6.2em;
-}
-
 .dd-item {
   color: #b27d7d;
 
@@ -392,19 +321,9 @@ body {
 }
 
 @media only screen and (min-width: 640px) {
-  .img-ex {
-    width: 100%;
-    height: 45vh;
-
-  }
 }
 
 @media only screen and (max-width: 639px) {
-  .img-ex {
-    width: 100%;
-    height: 30vh;
-
-  }
 }
 
 .titles {
@@ -432,16 +351,6 @@ body {
 
 .carousel-inner {
   padding: 1em;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  background-color: rgba(255, 94, 110, 0.7);
-  width: 5vh;
-  height: 5vh;
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 @media (min-width: 768px) {
@@ -487,35 +396,6 @@ body {
   }
 }
 
-.sectionNeighbourhoods {
-  background-color: #fdf4f5;
-  padding-bottom: 5vh;
-  padding-top: 3vh;
-}
-
-.sectionNeighbourhoods2 {
-  background-color: #fdf4f5;
-  padding-bottom: 5vh;
-  padding-top: 3vh;
-}
-
-.sectionNeighbourhoodsTitle {
-  font-family: 'Luckiest Guy', cursive;
-  font-size: calc(14px + (45 - 14) * ((100vw - 300px) / (1600 - 300)));
-  color: #c93838;
-}
-
-.sectionNeighbourhoodsTitle2 {
-  font-family: 'Luckiest Guy', cursive;
-  font-size: calc(14px + (45 - 14) * ((100vw - 300px) / (1600 - 300)));
-  color: #c93838;
-}
-
-.img-ex2 {
-  background-color: rgba(255, 94, 82, 0.25);
-  border-radius: 50%;
-}
-
 .img-ex3 {
   background-color: rgba(165, 106, 67, 0.6);
   border-radius: 50%;
@@ -523,10 +403,6 @@ body {
 
 .img-ex3:hover {
   background-color: rgba(165, 106, 67, 0.2);
-}
-
-.img-ex2:hover {
-  background-color: rgb(255, 156, 156);
 }
 
 .name {
@@ -539,26 +415,10 @@ body {
   text-decoration: none;
 }
 
-.login-text {
-
-  color: #4A4A4A;
-  font-size: 1.3vw;
-}
-
 @media only screen and (min-width: 640px) {
-  .img-ex2 {
-    width: 100%;
-    height: 35vh;
-
-  }
 }
 
 @media only screen and (max-width: 639px) {
-  .img-ex2 {
-    width: 100%;
-    height: 20vh;
-
-  }
 }
 
 .info {
@@ -594,20 +454,6 @@ body {
 .time {
   border-left: 0.4vh solid #f56363;
   padding: 2vh;
-}
-
-.weather {
-  font-weight: lighter;
-  font-family: "Segoe UI", sans-serif;
-  text-align: left;
-  border-left: 0.4vh solid #f56363;
-  padding: 2vh;
-}
-
-.weather .weatherTitle {
-  font-variant: small-caps;
-  color: rgba(202, 14, 0, 0.8);
-  font-size: calc(20px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .subscribe {
@@ -693,43 +539,6 @@ body {
 
 .icon-color {
   color: indianred;
-}
-
-.learn-more {
-  border: 1px solid #ffb6bb;
-  background-color: rgba(248, 117, 142, 0.05);
-
-}
-
-.learn-more:hover {
-  border: 1px solid #ff5e6e;
-  background-color: rgba(255, 101, 75, 0.35);
-}
-
-.learn-text {
-  font-family: Tahoma, serif;
-  color: #ff6e6e;
-}
-
-.learn-more-second {
-  border: 2px solid #ffb6bb;
-  background-color: rgba(248, 117, 142, 0.05);
-}
-
-.learn-more-second:hover {
-  border: 2px solid #ff7d83;
-  background-color: rgba(255, 145, 145, 0.35);
-}
-
-.learn-text2 {
-  font-family: Nunito, sans-serif;
-  font-weight: bold;
-  font-size: 1.1vw;
-  color: #ff6e6e;
-}
-
-.learn-more-second:hover .learn-text2 {
-  color: white;
 }
 
 .foodTitleContainer {
@@ -839,24 +648,13 @@ body {
   color: darkslategray;
 }
 
-.subtitle {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 1.8vw;
-  color: rgb(255, 94, 110);
-}
-
 .descriptionEvent {
   text-align: justify;
   font-family: 'Quicksand', sans-serif;
   font-size: 1.6vw;
   color: #793448;
 }
-.addInfo{
-  font-family: 'Poppins', sans-serif;
-  font-size: 1vw;
-  color: #cd5c5d;
-}
+
 .map {
   height: 20vw;
 }
@@ -880,12 +678,6 @@ body {
 }
 
 
-.tabsStyle{
-  font-family: 'Poppins', sans-serif;
-  font-size: 2vw;
-  text-transform: uppercase;
-  font-weight: bolder;
-}
 .nav-tabs .nav-link.active{
   color: #ca0e00;
 }
@@ -958,16 +750,8 @@ body {
   border: 1px solid #f8c146;
 }
 
-.cardCategory{
-  height: 10vw;
-  width: 6vw;
-}
 .authorA:hover{
   color: #683516;
-}
-
-.demo-inline-calendar-card {
-  width: 300px;
 }
 
 
