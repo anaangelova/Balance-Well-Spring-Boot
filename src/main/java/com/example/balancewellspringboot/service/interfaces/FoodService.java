@@ -4,6 +4,7 @@ import com.example.balancewellspringboot.model.Ingredient;
 import com.example.balancewellspringboot.model.dto.AddFoodDTO;
 import com.example.balancewellspringboot.model.dto.FoodDetailDTO;
 import com.example.balancewellspringboot.model.dto.IngredientDTO;
+import com.example.balancewellspringboot.model.dto.RecipeAddToMealRequestDTO;
 import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamFoodDetailResponseDTO;
 import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamIngredientDTO;
 
@@ -21,5 +22,7 @@ public interface FoodService {
     EdamamFoodDetailResponseDTO saveSelectedIngredient(String date, String meal, String foodId, AddFoodDTO addFoodDTO) throws IOException, InterruptedException;
     IngredientDTO getIngredientDTO(String currentUser, LocalDate date, String meal, String ingrId);
     void deleteIngredientById(String ingrId, String currentUser, LocalDate date, String meal);
+
+    Ingredient addRecipeToMeal(RecipeAddToMealRequestDTO recipeDTO, Long recipeId, String currentUser);
 
 }

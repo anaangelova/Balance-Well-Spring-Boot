@@ -3,18 +3,23 @@ package com.example.balancewellspringboot.service.implementations;
 import com.example.balancewellspringboot.model.Ingredient;
 import com.example.balancewellspringboot.model.LoggedDay;
 import com.example.balancewellspringboot.model.Meal;
+import com.example.balancewellspringboot.model.Recipe;
 import com.example.balancewellspringboot.model.dto.AddFoodDTO;
 import com.example.balancewellspringboot.model.dto.FoodDetailDTO;
 import com.example.balancewellspringboot.model.dto.IngredientDTO;
+import com.example.balancewellspringboot.model.dto.RecipeAddToMealRequestDTO;
 import com.example.balancewellspringboot.model.dto.edamamApi.dto.*;
+import com.example.balancewellspringboot.model.exceptions.RecipeNotFoundException;
 import com.example.balancewellspringboot.repository.IngredientRepository;
 import com.example.balancewellspringboot.repository.MealRepository;
+import com.example.balancewellspringboot.repository.RecipeRepository;
 import com.example.balancewellspringboot.service.interfaces.FoodService;
 import com.example.balancewellspringboot.service.interfaces.LoggedDayService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.httpclient.util.URIUtil;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,12 +40,14 @@ public class FoodServiceImplementation implements FoodService {
     private final IngredientRepository ingredientRepository;
     private final MealRepository mealRepository;
     private final LoggedDayService loggedDayService;
+    private final RecipeRepository recipeRepository;
     private static final Gson gson = new GsonBuilder().create();
 
-    public FoodServiceImplementation(IngredientRepository ingredientRepository, MealRepository mealRepository, LoggedDayService loggedDayService) {
+    public FoodServiceImplementation(IngredientRepository ingredientRepository, MealRepository mealRepository, LoggedDayService loggedDayService, RecipeRepository recipeRepository) {
         this.ingredientRepository = ingredientRepository;
         this.mealRepository = mealRepository;
         this.loggedDayService = loggedDayService;
+        this.recipeRepository = recipeRepository;
     }
 
     @Override
@@ -68,10 +75,10 @@ public class FoodServiceImplementation implements FoodService {
     @Override
     @Transactional
     public Ingredient createIngredient(EdamamFoodDetailResponseDTO foodDTO, String foodName, String date, String currentUser, String meal) {
-        EdamamParsedDTO parsed = foodDTO.getIngredients().get(0).getParsed().get(0);
+        EdamamParsedDTO parsed = foodDTO.getIngredients().get(0).getParsed().get(0); //
 
-        LoggedDay loggedDay = loggedDayService.getLoggedDay(currentUser, LocalDate.parse(date));
-        Meal mealForIngredient = loggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().get();
+        LoggedDay loggedDay = this.getLoggedDay(currentUser, LocalDate.parse(date));
+        Meal mealForIngredient = getMeal(loggedDay, meal);
 
         Ingredient ingredient = Ingredient
                 .builder()
@@ -85,11 +92,7 @@ public class FoodServiceImplementation implements FoodService {
 
         Ingredient savedIngredient = ingredientRepository.save(ingredient);
 
-        mealForIngredient.updateCaloriesInMeal();
-        mealRepository.save(mealForIngredient);
-
-        loggedDay.updateTotalCalories();
-        loggedDayService.saveLoggedDay(loggedDay);
+        this.updateCaloriesInMealAndLoggedDay(mealForIngredient, loggedDay);
 
         return savedIngredient;
     }
@@ -98,8 +101,8 @@ public class FoodServiceImplementation implements FoodService {
     public Ingredient editIngredient(EdamamFoodDetailResponseDTO foodDTO, String date, String currentUser, String meal, String ingrId) {
         EdamamParsedDTO parsed = foodDTO.getIngredients().get(0).getParsed().get(0);
 
-        LoggedDay currentLoggedDay = loggedDayService.getLoggedDay(currentUser, LocalDate.parse(date));
-        Meal mealForIngredient = currentLoggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().get();
+        LoggedDay currentLoggedDay = this.getLoggedDay(currentUser, LocalDate.parse(date));
+        Meal mealForIngredient = getMeal(currentLoggedDay, meal);
 
         Ingredient ingredientToEdit = currentLoggedDay.getAllMealsForDay()
                 .stream()
@@ -118,20 +121,17 @@ public class FoodServiceImplementation implements FoodService {
         Ingredient savedIngredient = ingredientRepository.save(ingredientToEdit);
 
         mealForIngredient.getIngredientList().removeIf(i -> i.getId().equals(ingredientToEdit.getId()));
+
         mealForIngredient.getIngredientList().add(savedIngredient);
-        mealForIngredient.updateCaloriesInMeal();
 
-        mealRepository.save(mealForIngredient);
-
-        currentLoggedDay.updateTotalCalories();
-        loggedDayService.saveLoggedDay(currentLoggedDay);
+        this.updateCaloriesInMealAndLoggedDay(mealForIngredient, currentLoggedDay);
 
         return savedIngredient;
     }
 
     @Override
     public List<String> searchForIngredientsFromSearchField(String searchInput, String date, String meal) throws IOException, InterruptedException {
-        String uri = URIUtil.encodeQuery("https://api.edamam.com/auto-complete?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6&q=" + searchInput  + "&limit=10");
+        String uri = URIUtil.encodeQuery("https://api.edamam.com/auto-complete?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6&q=" + searchInput + "&limit=10");
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(uri))
@@ -140,13 +140,14 @@ public class FoodServiceImplementation implements FoodService {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-        Type foodListType = new TypeToken<ArrayList<String>>(){}.getType();
+        Type foodListType = new TypeToken<ArrayList<String>>() {
+        }.getType();
         return gson.fromJson(response.body(), foodListType);
     }
 
     @Override
     public EdamamIngredientDTO getDetailsDTOForSelectedIngredient(String date, String meal, String foodName) throws IOException, InterruptedException {
-        String uri = URIUtil.encodeQuery("https://api.edamam.com/api/food-database/v2/parser?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6&ingr="+ foodName + "&nutrition-type=cooking");
+        String uri = URIUtil.encodeQuery("https://api.edamam.com/api/food-database/v2/parser?app_id=64af34d6&app_key=14c978ef5027cb9f2de6dcb328b7e4b6&ingr=" + foodName + "&nutrition-type=cooking");
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(uri))
                 .header("Accept", "application/json")
@@ -186,7 +187,7 @@ public class FoodServiceImplementation implements FoodService {
 
     @Override
     public IngredientDTO getIngredientDTO(String currentUser, LocalDate date, String meal, String ingrId) {
-        LoggedDay currentLoggedDay = loggedDayService.getLoggedDay(currentUser, date);
+        LoggedDay currentLoggedDay = this.getLoggedDay(currentUser, date);
         Ingredient ingredient = currentLoggedDay.getAllMealsForDay()
                 .stream()
                 .filter(m -> m.getName().name().equalsIgnoreCase(meal))
@@ -210,16 +211,53 @@ public class FoodServiceImplementation implements FoodService {
 
     @Override
     public void deleteIngredientById(String ingrId, String currentUser, LocalDate date, String meal) {
-        LoggedDay currentLoggedDay = loggedDayService.getLoggedDay(currentUser, date);
-        Meal mealForIngredient = currentLoggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().get();
-
+        LoggedDay currentLoggedDay = this.getLoggedDay(currentUser, date);
+        Meal mealForIngredient = getMeal(currentLoggedDay, meal);
         ingredientRepository.deleteById(Long.valueOf(ingrId));
 
-        mealForIngredient.updateCaloriesInMeal();
-        mealRepository.save(mealForIngredient);
-
-        currentLoggedDay.updateTotalCalories();
-        loggedDayService.saveLoggedDay(currentLoggedDay);
+        this.updateCaloriesInMealAndLoggedDay(mealForIngredient, currentLoggedDay);
 
     }
+
+    @Override
+    public Ingredient addRecipeToMeal(RecipeAddToMealRequestDTO recipeDTO, Long recipeId, String currentUser) {
+        Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(() -> new RecipeNotFoundException(recipeId));
+
+        LoggedDay loggedDay = this.getLoggedDay(currentUser, LocalDate.parse(recipeDTO.getSelectedDate()));
+        Meal mealForIngredient = getMeal(loggedDay, recipeDTO.getMeal());
+
+        Ingredient ingredient = Ingredient
+                .builder()
+                .name(recipe.getTitle())
+                .foodIdApi(null)
+                .quantity(1.0) // TO DO da se smene
+                .measurement("serving")
+                .caloriesInIngredient(recipeDTO.getCaloriesRecipe())
+                .meal(mealForIngredient)
+                .build();
+
+        Ingredient savedIngredient = ingredientRepository.save(ingredient);
+
+        this.updateCaloriesInMealAndLoggedDay(mealForIngredient, loggedDay);
+
+        return savedIngredient;
+    }
+
+    private static Meal getMeal(LoggedDay loggedDay, String meal) {
+        return loggedDay.getAllMealsForDay().stream().filter(m -> m.getName().name().equalsIgnoreCase(meal)).findFirst().get();
+
+    }
+
+    private LoggedDay getLoggedDay(String currentUser, LocalDate selectedDate) {
+        return loggedDayService.getLoggedDay(currentUser, selectedDate);
+    }
+
+    private void updateCaloriesInMealAndLoggedDay(Meal meal, LoggedDay loggedDay) {
+        meal.updateCaloriesInMeal();
+        mealRepository.save(meal);
+
+        loggedDay.updateTotalCalories();
+        loggedDayService.saveLoggedDay(loggedDay);
+    }
+
 }

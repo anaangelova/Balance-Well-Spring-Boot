@@ -3,6 +3,7 @@ package com.example.balancewellspringboot.model.identity;
 import com.example.balancewellspringboot.model.Image;
 import com.example.balancewellspringboot.model.LoggedDay;
 import com.example.balancewellspringboot.model.Profile;
+import com.example.balancewellspringboot.model.Recipe;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,9 @@ public class EndUser implements UserDetails {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "author")
+    private List<Recipe> recipes;
 
     //oAuth2
     @Enumerated(EnumType.STRING)

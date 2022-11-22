@@ -68,21 +68,21 @@
             </button>
 
             <div class="collapse navbar-collapse justify-content-center" id="main_nav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" th:if="${#request.getRemoteUser() != null}">
                     <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/home"> <span
                             class="text">Home</span>
                     </a></li>
-                    <li class="nav-item menu-item " th:if="${#request.getRemoteUser() != null}">
+                    <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/recipes"> <span
+                            class="text">Recipes</span>
+                    </a></li>
+                    <li class="nav-item menu-item">
                         <a class="nav-link hover-underline-animation" th:href="@{'/profile/my-profile/{id}' (id=${#request.getRemoteUser()})}"> <span
                                 class="text">My &nbsp;profile</span>
                         </a></li>
-                    <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/home"> <span
-                            class="text">Healthy Lifestyle</span>
-                    </a></li>
-                    <li class="nav-item menu-item "><a class="nav-link hover-underline-animation" href="/home"> <span
-                            class="text">Home</span>
-                    </a></li>
-
+                    <li class="nav-item menu-item">
+                        <a class="nav-link hover-underline-animation" th:href="@{'/recipes/myRecipes/{id}' (id=${#request.getRemoteUser()})}"> <span
+                                class="text">My &nbsp;recipes</span>
+                        </a></li>
                 </ul>
 
             </div>

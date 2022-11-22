@@ -5,7 +5,7 @@
 </head>
 <body>
 <th:block th:replace="fragments/parts.html :: headerEx"></th:block>
-<div class="containerRecipes px-5 pb-5 pt-3 mt-3 ">
+<div class="containerRecipes px-5 pb-5 pt-3 mt-3 " style="width: 60%;">
     <div class="container d-flex justify-content-center my-3">
         <div class="mr-3">
             <img th:src="${foodDetail.getFoodImage()}" alt="">
@@ -54,6 +54,5 @@
 </div>
 
 <th:block th:replace="fragments/parts.html :: footer"></th:block>
-<script type="text/javascript" th:src="@{/home.js}"></script>
 </body>
 </html>

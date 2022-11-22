@@ -923,6 +923,27 @@ body {
   color: white;
 }
 
+.btnDeleteLarge{
+  background-color: transparent;
+  border: 2px solid darkred;
+  color: darkred;
+}
+.btnDeleteLarge:hover{
+  background-color: darkred;
+  border: 2px solid darkred;
+  color: white;
+}
+.btnEditLarge{
+  background-color: transparent;
+  border: 2px solid darkgreen;
+  color: darkgreen;
+}
+.btnEditLarge:hover{
+  background-color: darkgreen;
+  border: 2px solid darkgreen;
+  color: white;
+}
+
 .btn:hover {
   color: #fff;
 }

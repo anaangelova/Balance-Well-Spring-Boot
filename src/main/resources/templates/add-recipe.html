@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/parts.html :: headerfiles">
+
+</head>
+<body>
+<th:block th:replace="fragments/parts.html :: headerEx"></th:block>
+
+<div class="container editContainer mt-0 pb-5">
+    <h1 class="h1 text-center editT pt-5 py-3">Add New Recipe</h1>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form action="/recipes/addRecipe" method="POST" enctype="multipart/form-data" class="editForm">
+                <div class="form-group">
+                    <label for="title">Recipe title</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           name="title"
+                           required
+                           placeholder="Enter recipe title">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Recipe description</label>
+                    <input type="text"
+                           class="form-control"
+                           id="desc"
+                           name="description"
+                           required
+                           placeholder="Description">
+                </div>
+
+                <div class="form-row">
+                    <div class="col-6">
+                        <label>Meal</label>
+                        <select name="meal" class="form-control" required>
+
+                            <option
+                                    th:each="meal : ${dto.getAllMeals()}"
+                                    th:value="${meal.name()}"
+                                    th:text="${meal.name()}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>Ingredients
+                        <button id="addRowIngr" type="button" class="modifiedB">+</button>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <input type="number" name="ingredientQuantities" class="form-control m-input mr-2" min="0"
+                               required>
+                        <select name="ingredientMeasurements" class="form-control mr-2" required>
+
+                            <option
+                                    th:each="measurement : ${dto.getAllMeasurements()}"
+                                    th:value="${measurement.toString()}"
+                                    th:text="${measurement.toString()}">
+                            </option>
+                        </select>
+                        <input type="text" name="ingredientNames" class="form-control m-input"
+                               placeholder="Enter ingredient" required
+                               autocomplete="off">
+                    </div>
+                    <div id="newRowIngr"></div>
+
+
+                </div>
+
+
+                <div>Prep time</div>
+                <div class="form-group">
+
+                    <div class="row">
+                        <input type="number" class="form-control col-4 ml-4 mr-2" id="prep" min="0"
+                               name="prepH" placeholder="hours" required>
+
+                        <input type="number" class="form-control col-4" id="prepMin" name="prepM" min="0" max="59"
+                               placeholder="mins" required>
+                    </div>
+                </div>
+
+
+                <div>Cook time</div>
+                <div class="form-group">
+
+                    <div class="row">
+                        <input type="number" class="form-control col-4 ml-4 mr-2" id="cook" min="0"
+                               name="cookH" placeholder="hours" required>
+
+                        <input type="number" class="form-control col-4" id="cookMin" name="cookM" min="0" max="59"
+                               placeholder="mins" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="caloriesRecipe">Calories</label>
+                    <input type="number"
+                           class="form-control"
+                           id="caloriesRecipe"
+                           name="caloriesRecipe"
+                           placeholder="Calories" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Upload image</label>
+                    <input type="file" multiple
+                           class="form-control"
+                           id="images"
+                           name="images"
+                           placeholder="Upload images" required>
+                </div>
+                <div class="form-group">
+                    <div>Instructions
+                        <button id="addRow" type="button" class="modifiedB">+</button>
+                    </div>
+
+                    <input type="text" name="instructions" class="form-control m-input mb-2" placeholder="Enter instruction"
+                           autocomplete="off" required>
+                    <div id="newRow"></div>
+
+
+                </div>
+
+                <input type="hidden" name="author" th:value="${#request.getRemoteUser()}">
+                <button type="submit" class="btn formBtnJump rounded-0 mt-2 btn-block">SAVE RECIPE</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:replace="fragments/parts.html :: footer"></th:block>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var modelAttributeValue = /*[[${measurements}]]*/ ;
+
+    /*]]>*/
+</script>
+<script type="text/javascript" th:src="@{/recipeDetail.js}"></script>
+
+
+</body>
+</html>
