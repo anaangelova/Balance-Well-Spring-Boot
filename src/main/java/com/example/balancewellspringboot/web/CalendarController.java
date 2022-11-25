@@ -1,5 +1,6 @@
 package com.example.balancewellspringboot.web;
 
+import com.example.balancewellspringboot.model.dto.CaloriesGoalDTO;
 import com.example.balancewellspringboot.model.dto.LoggedDayDTO;
 import com.example.balancewellspringboot.service.interfaces.LoggedDayService;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,12 @@ public class CalendarController {
         LocalDate localDate = time.atZone(ZoneId.systemDefault()).toLocalDate();
         LoggedDayDTO loggedDayDTO = loggedDayService.getLoggedDayDTO(httpServletRequest.getRemoteUser(), localDate);
         model.addAttribute("day", loggedDayDTO);
+        model.addAttribute("totalCalories", loggedDayDTO.getTotalCalories());
+        model.addAttribute("targetCalories", loggedDayDTO.getTargetCalories());
         model.addAttribute("localDate", localDate);
+        CaloriesGoalDTO caloriesGoalDTO = loggedDayService.getInfoMessage(loggedDayDTO);
+        model.addAttribute("infoMessage", caloriesGoalDTO.getMessage());
+        model.addAttribute("status", caloriesGoalDTO.getStatus());
         return "log-day";
     }
 }

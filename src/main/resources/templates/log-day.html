@@ -34,3 +34,26 @@
     </details>
 </div>
 
+<!-- Modal -->
+<div class="modal fade hide fade2 customTransition" id="infoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close d-flex justify-content-end mt-1" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="pr-3">&times;</span>
+            </button>
+            <div id="contentModalBody" class="modal-body info-message pt-3 pb-5 px-5" th:text="${infoMessage}">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var totalCalories = /*[[${totalCalories}]]*/ ;
+    var targetCalories = /*[[${targetCalories}]]*/ ;
+    var infoMessage = /*[[${infoMessage}]]*/
+    var status = /*[[${status}]]*/
+    /*]]>*/
+</script>

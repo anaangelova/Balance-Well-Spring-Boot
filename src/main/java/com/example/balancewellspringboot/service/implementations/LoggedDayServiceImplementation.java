@@ -1,6 +1,7 @@
 package com.example.balancewellspringboot.service.implementations;
 
 import com.example.balancewellspringboot.model.*;
+import com.example.balancewellspringboot.model.dto.CaloriesGoalDTO;
 import com.example.balancewellspringboot.model.dto.IngredientDTO;
 import com.example.balancewellspringboot.model.dto.LoggedDayDTO;
 import com.example.balancewellspringboot.model.dto.MealDTO;
@@ -86,6 +87,36 @@ public class LoggedDayServiceImplementation implements LoggedDayService {
     @Override
     public LoggedDay saveLoggedDay(LoggedDay loggedDay) {
         return loggedDayRepository.save(loggedDay);
+    }
+
+    @Override
+    public CaloriesGoalDTO getInfoMessage(LoggedDayDTO loggedDayDTO) {
+        if(((loggedDayDTO.getTotalCalories()*1.0 / loggedDayDTO.getTargetCalories()) * 100.0 >= 80)
+                && ((loggedDayDTO.getTotalCalories()*1.0 / loggedDayDTO.getTargetCalories()) * 100.0 < 98)) {
+            return CaloriesGoalDTO
+                    .builder()
+                    .status(0)
+                    .message("You're on your way to meet your daily target calories! Keep up, you're doing a great job!")
+                    .build();
+        } else if (((loggedDayDTO.getTotalCalories()*1.0 / loggedDayDTO.getTargetCalories()) * 100.0 >= 98)
+                && ((loggedDayDTO.getTotalCalories()*1.0 / loggedDayDTO.getTargetCalories()) * 100.0 < 104)) {
+            return CaloriesGoalDTO
+                    .builder()
+                    .status(1)
+                    .message("Great job! You've met your daily calories goal and be proud of yourself!")
+                    .build();
+        } else if (((loggedDayDTO.getTotalCalories()*1.0 / loggedDayDTO.getTargetCalories()) * 100.0 >= 104)) {
+            return CaloriesGoalDTO
+                    .builder()
+                    .status(2)
+                    .message("You're above your daily calories target for the day. Be mindful of your choices, but don't be so hard on yourself.")
+                    .build();
+        }
+        return CaloriesGoalDTO
+                .builder()
+                .message(null)
+                .status(-1)
+                .build();
     }
 
     private String formatDate(LocalDate dateForDay) {

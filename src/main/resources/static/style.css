@@ -4,320 +4,349 @@
 
 @media all and (min-width: 992px) {
 
-  .navbar .nav-item:hover .nav-link {
-    color: rgba(186, 104, 104, 0.69);
-  }
+    .navbar .nav-item:hover .nav-link {
+        color: rgba(186, 104, 104, 0.69);
+    }
 
 }
 
-.cat{
-  height: 7vw;
-  width: 7vw;
+.cat {
+    height: 7vw;
+    width: 7vw;
 
 }
-.table-textMyRecipes{
-  font-family: "Rubik",sans-serif;
-  font-weight: bold;
-  font-size: 1.2vw;
+
+.table-textMyRecipes {
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    font-size: 1.2vw;
 }
 
-.tableTextInf{
-  font-family: "Rubik",sans-serif;
-  color: black;
-  text-transform: uppercase;
+.tableTextInf {
+    font-family: "Rubik", sans-serif;
+    color: black;
+    text-transform: uppercase;
 }
 
-.modifiedB{
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  color: red;
-}
-.removeModified{
-  background-color: transparent;
-  border: none;
-  color: red;
-  font-weight: bold;
-
-}
-.image-tumbnail{
-  height: 100%;
-  width: 100%;
+.modifiedB {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: red;
 }
 
-.imageLogin{
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: cover;
+.removeModified {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-weight: bold;
+
 }
+
+.image-tumbnail {
+    height: 100%;
+    width: 100%;
+}
+
+.imageLogin {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 body {
-  background-color: rgba(240, 249, 249, 0.10);
+    background-color: rgba(240, 249, 249, 0.10);
 }
 
 .add {
-  line-height: 0.8;
+    line-height: 0.8;
 }
 
 .title {
-  color: #015008;
-  font-family: 'Rancho', cursive;
-  font-size: 1.7vw;
+    color: #015008;
+    font-family: 'Rancho', cursive;
+    font-size: 1.7vw;
 
 
 }
+
 .titleSec {
-  color: #e5de00;
-  font-family: 'Rancho', cursive;
-  font-size: 1.7vw;
+    color: #e5de00;
+    font-family: 'Rancho', cursive;
+    font-size: 1.7vw;
 }
 
 .navigation {
-  background-color: #fefefa;
+    background-color: #fefefa;
 }
 
 
-.inputLogin{
-  height: 3.6vw;
+.inputLogin {
+    height: 3.6vw;
 
 }
+
 .form-control:focus {
-  border: 2px solid #e5de00;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229, 222, 0, 0.5);
-  background-color: white;
-}
-.formContainer{
-  background-color: #f6f3e7;
-}
-.formBtn{
-  border: 1px solid #e5de00;
-  background-color: rgba(229, 222, 0, 0.9);
-  color: #FFFFFF;
-  height: 3vw;
-  font-family: "Rubik",sans-serif;
-  font-size: 1.3vw;
-  text-transform: uppercase;
-
-}
-.formBtn:hover{
-  color: white;
-  background-color: rgba(229, 222, 0, 0.5);
-  border: 1px solid #d5ce02;
+    border: 2px solid #e5de00;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229, 222, 0, 0.5);
+    background-color: white;
 }
 
-.formBtnSave{
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
-  color: #FFFFFF;
-  height: 2.2vw;
-  font-family: "Rubik",sans-serif;
-  font-size: 1vw;
-  text-transform: uppercase;
-
-}
-.formBtnSave:hover{
-  color: white;
-  background-color: rgba(255, 75, 43, 0.65);
-  border: 1px solid rgba(255, 75, 43, 0.51);
-}
-.btnSave{
-  border: 1px solid #857764;
-  background-color: white;
-  color: #857764;
-  height: 2.2vw;
-  font-family: 'Poppins', sans-serif;
-  width: 90%;
-  font-size: 1vw;
-  text-transform: uppercase;
-
-}
-.meal{
-  font-size: 1.2rem;
-  color: darkred;
-  font-family: 'Poppins', sans-serif;
-
-
-}
-.trans{
-  transition: 500ms ease;
-}
-.trans:hover{
-  transform: scale(1.1);
-}
-.authorInf{
-  font-family: Poppins, sans-serif;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #606060;
-  box-sizing: border-box;
-}
-.recipeTitle{
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  font-size: 1.3rem;
-}
-.btnSave:hover{
-  color: white;
-  background-color: #857764;
-  border: 1px solid rgba(136, 119, 99, 0.64);
-}
-.formBtnJump{
-  border: 1px solid #93846f;
-  background-color: #a18f7a;
-  color: #FFFFFF;
-  height: 2.2vw;
-  font-family: "Rubik",sans-serif;
-  font-size: 1vw;
-  text-transform: uppercase;
-
-}
-.formBtnJump:hover{
-  color: white;
-  background-color: rgba(150, 134, 112, 0.67);
-  border: 1px solid rgba(147, 132, 111, 0.59);
-}
-.addBtn{
-  border: 1px solid #93846f;
-  background-color: #a18f7a;
-  color: #FFFFFF;
-  height: 2.2vw;
-  font-family: "Rubik",sans-serif;
-  font-size: 1vw;
-  text-transform: uppercase;
-
-}
-.addBtn:hover{
-  color: white;
-  background-color: rgba(150, 134, 112, 0.67);
-  border: 1px solid rgba(147, 132, 111, 0.59);
-}
-.form-control{
-  background-color: white;
+.formContainer {
+    background-color: #f6f3e7;
 }
 
-.carouselDiv{
-  width: 100%;
-  height: 30vw;
-}
-.recipeContainer{
-  background-color: rgba(250, 235, 215, 0.6);
+.formBtn {
+    border: 1px solid #e5de00;
+    background-color: rgba(229, 222, 0, 0.9);
+    color: #FFFFFF;
+    height: 3vw;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.3vw;
+    text-transform: uppercase;
+
 }
 
-.editContainer{
-  background-color: rgba(250, 250, 226, 0.76);
-}
-.newestTitle{
-  font-family: Poppins, sans-serif;
-  font-size: 2vw;
-  color: rgba(1,80,8,0.9);
+.formBtn:hover {
+    color: white;
+    background-color: rgba(229, 222, 0, 0.5);
+    border: 1px solid #d5ce02;
 }
 
-.containerRecipes{
-  background-color: #f0f9f9;
-  width: 90%;
-  min-height: 620px;
-  margin-left: auto;
-  margin-right: auto;
+.formBtnSave {
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    height: 2.2vw;
+    font-family: "Rubik", sans-serif;
+    font-size: 1vw;
+    text-transform: uppercase;
+
 }
-.card-footer{
-  background-color: transparent;
-  border: none;
-  padding-right: 0;
-  padding-left: 0.7vw;
+
+.formBtnSave:hover {
+    color: white;
+    background-color: rgba(255, 75, 43, 0.65);
+    border: 1px solid rgba(255, 75, 43, 0.51);
 }
-.editT{
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5vw;
-  color: darkolivegreen;
-  text-decoration: underline;
-  text-decoration-color: darkred;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.5vw;
+
+.btnSave {
+    border: 1px solid #857764;
+    background-color: white;
+    color: #857764;
+    height: 2.2vw;
+    font-family: 'Poppins', sans-serif;
+    width: 90%;
+    font-size: 1vw;
+    text-transform: uppercase;
+
 }
-.login-title{
-  color: #e5de00;
-  font-family: 'Secular One', sans-serif;
-  font-size: 2.2vw;
+
+.meal {
+    font-size: 1.2rem;
+    color: darkred;
+    font-family: 'Poppins', sans-serif;
+
+
 }
-.register-title{
-  color: #e5de00;
-  font-family: 'Secular One', sans-serif;
-  font-size: 5vw;
+
+.trans {
+    transition: 500ms ease;
 }
-.user-present{
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2vw;
-  line-height: 1;
-  text-align: start;
+
+.trans:hover {
+    transform: scale(1.1);
 }
+
+.authorInf {
+    font-family: Poppins, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #606060;
+    box-sizing: border-box;
+}
+
+.recipeTitle {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.btnSave:hover {
+    color: white;
+    background-color: #857764;
+    border: 1px solid rgba(136, 119, 99, 0.64);
+}
+
+.formBtnJump {
+    border: 1px solid #93846f;
+    background-color: #a18f7a;
+    color: #FFFFFF;
+    height: 2.2vw;
+    font-family: "Rubik", sans-serif;
+    font-size: 1vw;
+    text-transform: uppercase;
+
+}
+
+.formBtnJump:hover {
+    color: white;
+    background-color: rgba(150, 134, 112, 0.67);
+    border: 1px solid rgba(147, 132, 111, 0.59);
+}
+
+.addBtn {
+    border: 1px solid #93846f;
+    background-color: #a18f7a;
+    color: #FFFFFF;
+    height: 2.2vw;
+    font-family: "Rubik", sans-serif;
+    font-size: 1vw;
+    text-transform: uppercase;
+
+}
+
+.addBtn:hover {
+    color: white;
+    background-color: rgba(150, 134, 112, 0.67);
+    border: 1px solid rgba(147, 132, 111, 0.59);
+}
+
+.form-control {
+    background-color: white;
+}
+
+.carouselDiv {
+    width: 100%;
+    height: 30vw;
+}
+
+.recipeContainer {
+    background-color: rgba(250, 235, 215, 0.6);
+}
+
+.editContainer {
+    background-color: rgba(250, 250, 226, 0.76);
+}
+
+.newestTitle {
+    font-family: Poppins, sans-serif;
+    font-size: 2vw;
+    color: rgba(1, 80, 8, 0.9);
+}
+
+.containerRecipes {
+    background-color: #f0f9f9;
+    width: 90%;
+    min-height: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-footer {
+    background-color: transparent;
+    border: none;
+    padding-right: 0;
+    padding-left: 0.7vw;
+}
+
+.editT {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5vw;
+    color: darkolivegreen;
+    text-decoration: underline;
+    text-decoration-color: darkred;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.5vw;
+}
+
+.login-title {
+    color: #e5de00;
+    font-family: 'Secular One', sans-serif;
+    font-size: 2.2vw;
+}
+
+.register-title {
+    color: #e5de00;
+    font-family: 'Secular One', sans-serif;
+    font-size: 5vw;
+}
+
+.user-present {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2vw;
+    line-height: 1;
+    text-align: start;
+}
+
 .hover-underline-animation {
 
-  position: relative;
-  color: darkred;
+    position: relative;
+    color: darkred;
 }
 
 .hover-underline-animation:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1.5px;
-  bottom: 0;
-  left: 0;
-  background-color: darkred;
-  visibility: hidden;
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: darkred;
+    visibility: hidden;
 
-  transition: all 0.75s ease-in-out;
+    transition: all 0.75s ease-in-out;
 }
 
 .hover-underline-animation:hover:before {
-  visibility: visible;
-  transform: scaleX(1);
+    visibility: visible;
+    transform: scaleX(1);
 
 }
 
 
-
 .menu-item {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.6vw;
-  text-transform: uppercase;
-  padding-top: 1.5vw;
-  padding-bottom: 1.5vw;
-  padding-left: 0.9vw;
-  padding-right: 0.9vw;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.6vw;
+    text-transform: uppercase;
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    padding-left: 0.9vw;
+    padding-right: 0.9vw;
 
 
 }
 
 .menu-item:hover {
-  color: #e5de09;
+    color: #e5de09;
 }
 
 .dd-list {
-  font-size: 2vw;
-  width: 10.5em;
-  background-color: #fefefa;
-  border: none;
+    font-size: 2vw;
+    width: 10.5em;
+    background-color: #fefefa;
+    border: none;
 }
 
 .dd-item {
-  color: #b27d7d;
+    color: #b27d7d;
 
 }
 
 .dd-item:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #fc9191;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #fc9191;
 }
 
 .text {
 
-  color: #474747;
+    color: #474747;
 
 }
 
 .menu-item:hover .text {
-  color: #e6e141;
+    color: #e6e141;
 }
 
 @media only screen and (min-width: 640px) {
@@ -327,92 +356,92 @@ body {
 }
 
 .titles {
-  font-family: 'Nunito', sans-serif;
-  color: #fc1200;
-  font-size: 2.8vh;
+    font-family: 'Nunito', sans-serif;
+    color: #fc1200;
+    font-size: 2.8vh;
 }
 
 .cards-wrapper {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .card img {
-  max-width: 100%;
-  max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .card {
-  margin: 0 0.5em;
-  box-shadow: 1px 2px 6px 0 lightgrey;
-  border: none;
-  border-radius: 0;
+    margin: 0 0.5em;
+    box-shadow: 1px 2px 6px 0 lightgrey;
+    border: none;
+    border-radius: 0;
 }
 
 .carousel-inner {
-  padding: 1em;
+    padding: 1em;
 }
 
 @media (min-width: 768px) {
-  .card img {
-    height: 11em;
-  }
+    .card img {
+        height: 11em;
+    }
 }
 
 .carousel-indicators {
-  position: absolute;
-  bottom: 0;
+    position: absolute;
+    bottom: 0;
 
 }
 
 .carousel-indicators .indicate {
-  background-color: #ff5e6e;
+    background-color: #ff5e6e;
 
 }
 
 .caption {
-  background: rgba(206, 193, 193, 0.5);
-  width: 100%;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 2.3vw;
-  color: rgb(255, 228, 228);
+    background: rgba(206, 193, 193, 0.5);
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2.3vw;
+    color: rgb(255, 228, 228);
 }
 
 @media only screen and (max-width: 639px) {
-  .big-screen {
-    display: none;
-  }
+    .big-screen {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 640px) {
-  .small-screen {
-    display: none;
-  }
+    .small-screen {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 639px) {
-  .desktop-view {
-    display: none;
-  }
+    .desktop-view {
+        display: none;
+    }
 }
 
 .img-ex3 {
-  background-color: rgba(165, 106, 67, 0.6);
-  border-radius: 50%;
+    background-color: rgba(165, 106, 67, 0.6);
+    border-radius: 50%;
 }
 
 .img-ex3:hover {
-  background-color: rgba(165, 106, 67, 0.2);
+    background-color: rgba(165, 106, 67, 0.2);
 }
 
 .name {
-  font-family: 'Londrina Solid', cursive;
-  color: #f56363;
-  font-size: calc(14px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-family: 'Londrina Solid', cursive;
+    color: #f56363;
+    font-size: calc(14px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .title-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 @media only screen and (min-width: 640px) {
@@ -422,524 +451,578 @@ body {
 }
 
 .info {
-  font-size: calc(14px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
-  background-color: #fffdfd;
+    font-size: calc(14px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+    background-color: #fffdfd;
 
 }
 
 #timedate {
-  font-family: "Segoe UI", sans-serif;
-  text-align: left;
-  color: #ff5e6e;
+    font-family: "Segoe UI", sans-serif;
+    text-align: left;
+    color: #ff5e6e;
 
 }
 
 #timedate .titleTime {
-  font-variant: small-caps;
-  color: rgba(202, 14, 0, 0.8);
-  font-size: calc(20px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-variant: small-caps;
+    color: rgba(202, 14, 0, 0.8);
+    font-size: calc(20px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .spacing {
-  line-height: 2vw;
+    line-height: 2vw;
 }
 
 .date {
-  font-size: calc(5px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
-  color: #ca0e00;
-  font-family: Tahoma, serif;
+    font-size: calc(5px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: #ca0e00;
+    font-family: Tahoma, serif;
 
 }
 
 .time {
-  border-left: 0.4vh solid #f56363;
-  padding: 2vh;
+    border-left: 0.4vh solid #f56363;
+    padding: 2vh;
 }
 
 .subscribe {
-  font-size: calc(25px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
-  background-color: #fffaf0;
+    font-size: calc(25px + (35 - 14) * ((100vw - 300px) / (1600 - 300)));
+    background-color: #fffaf0;
 
 
 }
 
 .title-subscribe {
-  font-family: 'IBM Plex Sans', sans-serif;
-  color: #a56a43;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #a56a43;
 }
 
 @media only screen and (max-width: 639px) {
-  .img-ex3 {
-    height: 10vh;
-  }
+    .img-ex3 {
+        height: 10vh;
+    }
 }
 
 .title-subscribe .description {
-  color: #a56a43;
-  font-size: 2vh;
+    color: #a56a43;
+    font-size: 2vh;
 }
 
 .input {
-  background-color: whitesmoke;
-  border: 1px solid rgb(255, 216, 211);
-  color: #a16868;
+    background-color: whitesmoke;
+    border: 1px solid rgb(255, 216, 211);
+    color: #a16868;
 
 }
 
 .input:focus {
-  background-color: whitesmoke;
-  border: 1px solid rgb(255, 216, 211);
-  color: #a16868;
+    background-color: whitesmoke;
+    border: 1px solid rgb(255, 216, 211);
+    color: #a16868;
 }
 
 .input-button {
-  background-color: whitesmoke;
-  border: 1px solid rgb(255, 216, 211);
-  color: #a16868;
+    background-color: whitesmoke;
+    border: 1px solid rgb(255, 216, 211);
+    color: #a16868;
 }
 
 .input-button:hover {
-  background-color: whitesmoke;
-  border: 1px solid rgb(255, 216, 211);
-  color: red;
+    background-color: whitesmoke;
+    border: 1px solid rgb(255, 216, 211);
+    color: red;
 }
 
 .copyright {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 1vw;
-  color: rgba(161, 104, 104, 0.5);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1vw;
+    color: rgba(161, 104, 104, 0.5);
 }
 
 .icon {
-  font-size: 1vw;
-  border-color: rgba(161, 104, 104, 0.5);
-  color: rgba(161, 104, 104, 0.5);
+    font-size: 1vw;
+    border-color: rgba(161, 104, 104, 0.5);
+    color: rgba(161, 104, 104, 0.5);
 }
 
 .icon:hover {
-  font-size: 1vw;
-  border-color: rgba(161, 104, 104, 0.2);
-  color: rgb(255, 241, 240);
-  background-color: rgba(161, 104, 104, 0.5);
+    font-size: 1vw;
+    border-color: rgba(161, 104, 104, 0.2);
+    color: rgb(255, 241, 240);
+    background-color: rgba(161, 104, 104, 0.5);
 }
 
 .line {
-  width: 95%;
-  margin: 0 auto;
-  border-top: 1px solid #9e7878;
+    width: 95%;
+    margin: 0 auto;
+    border-top: 1px solid #9e7878;
 
 }
 
 .card-info {
-  font-family: 'Rubik', sans-serif;
-  font-size: 1.7vw;
-  color: maroon;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.7vw;
+    color: maroon;
 }
 
 .icon-color {
-  color: indianred;
+    color: indianred;
 }
 
 .foodTitleContainer {
-  text-transform: uppercase;
-  font-family: Poppins, sans-serif;
-  font-size: 2vw;
-  font-weight: bold;
-  color: #117777;
+    text-transform: uppercase;
+    font-family: Poppins, sans-serif;
+    font-size: 2vw;
+    font-weight: bold;
+    color: #117777;
 
 }
 
-.prepInfo{
-  flex-direction: column;
-  align-items: start;
-  display: flex;
-  position: relative;
+.prepInfo {
+    flex-direction: column;
+    align-items: start;
+    display: flex;
+    position: relative;
 
-  font-family: Nunito, sans-serif;
-  font-weight: lighter;
-  color: #683516;
-  font-size: 1.3vw;
+    font-family: Nunito, sans-serif;
+    font-weight: lighter;
+    color: #683516;
+    font-size: 1.3vw;
 }
 
 .prepTitle {
-  font-weight: bold;
-  font-family: Nunito, sans-serif;
-  color: saddlebrown;
+    font-weight: bold;
+    font-family: Nunito, sans-serif;
+    color: saddlebrown;
 }
 
 .content {
-  background-color: rgba(253, 250, 250, 0.46);
+    background-color: rgba(253, 250, 250, 0.46);
 }
 
 .text-description {
-  font-family: 'Nunito', sans-serif;
-  text-align: center;
-  font-size: 1.4vw;
-  color: #683516;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    font-size: 1.4vw;
+    color: #683516;
 
 }
 
 .card-infoS {
-  font-family: 'Rubik', sans-serif;
-  font-size: 1.2vw;
-  color: maroon;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2vw;
+    color: maroon;
 }
 
 .background-color {
-  background-color: transparent;
-  box-shadow: none;
+    background-color: transparent;
+    box-shadow: none;
 
 }
 
 .imageSmall {
-  height: 25vh;
+    height: 25vh;
 }
 
 .event-title {
-  font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif;
 
-  font-size: 4vw;
-  color: #015201;
+    font-size: 4vw;
+    color: #015201;
 }
-.ingrRow{
-  text-align: start;
+
+.ingrRow {
+    text-align: start;
 }
-.instrRow{
-  text-align: start;
-  border-bottom: 1px solid lightgrey;
-  padding-bottom: 1vw;
+
+.instrRow {
+    text-align: start;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 1vw;
 }
-.instrRow:hover{
-  background-color: #f7f7f7;
+
+.instrRow:hover {
+    background-color: #f7f7f7;
 }
+
 .ingr-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5vw;
-  color: gray;
-  text-decoration: underline;
-  text-decoration-color: darkred;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.5vw;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5vw;
+    color: gray;
+    text-decoration: underline;
+    text-decoration-color: darkred;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.5vw;
 
 }
-.dirTag{
-  text-align: center;
+
+.dirTag {
+    text-align: center;
 
 }
-.textDesc{
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.6vw;
+
+.textDesc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6vw;
 }
 
-.textDescDir{
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.2vw;
+.textDescDir {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2vw;
 
 }
-.num{
-  font-weight: bold;
-  font-size: 1.4vw;
+
+.num {
+    font-weight: bold;
+    font-size: 1.4vw;
 }
-.event-author{
-  font-family: Georgia,sans-serif;
-  font-style: italic;
-  font-size: 1.8vw;
-  color: darkslategray;
+
+.event-author {
+    font-family: Georgia, sans-serif;
+    font-style: italic;
+    font-size: 1.8vw;
+    color: darkslategray;
 }
 
 .descriptionEvent {
-  text-align: justify;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.6vw;
-  color: #793448;
+    text-align: justify;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6vw;
+    color: #793448;
 }
 
 .map {
-  height: 20vw;
+    height: 20vw;
 }
 
 .suggestionText {
-  font-family: 'Exo', sans-serif;
-  color: #a30000;
-  font-size: 1.8vw;
+    font-family: 'Exo', sans-serif;
+    color: #a30000;
+    font-size: 1.8vw;
 }
 
-.editForm input, .editForm select{
-  background-color: white;
-  border-radius: 0;
-  height: 3rem;
+.editForm input, .editForm select {
+    background-color: white;
+    border-radius: 0;
+    height: 3rem;
 }
 
-.editForm label, .editForm div{
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  font-size: 1.3vw;
+.editForm label, .editForm div {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.3vw;
 }
 
 
-.nav-tabs .nav-link.active{
-  color: #ca0e00;
-}
-.tabsStyle a{
-  color: #424242;
+.nav-tabs .nav-link.active {
+    color: #ca0e00;
 }
 
-.btnInfo{
-  background-color: transparent;
-  border: 2px solid rgba(252, 174, 25, 0.69);
-  color: rgba(252, 174, 25, 0.69);
-}
-.btnInfo:hover{
-  background-color: rgba(252, 174, 25, 0.69);
-  border: 2px solid rgba(252, 174, 25, 0.69);
-  color: white;
+.tabsStyle a {
+    color: #424242;
 }
 
-.btnDelete{
-  background-color: transparent;
-  border: none;
-  color: darkred;
-}
-.btnDelete:hover{
-  background-color: darkred;
-  color: white;
-}
-.btnEdit{
-  background-color: transparent;
-  border: none;
-  color: darkgreen;
-}
-.btnEdit:hover{
-  background-color: darkgreen;
-  color: white;
+.btnInfo {
+    background-color: transparent;
+    border: 2px solid rgba(252, 174, 25, 0.69);
+    color: rgba(252, 174, 25, 0.69);
 }
 
-.btnDeleteLarge{
-  background-color: transparent;
-  border: 2px solid darkred;
-  color: darkred;
+.btnInfo:hover {
+    background-color: rgba(252, 174, 25, 0.69);
+    border: 2px solid rgba(252, 174, 25, 0.69);
+    color: white;
 }
-.btnDeleteLarge:hover{
-  background-color: darkred;
-  border: 2px solid darkred;
-  color: white;
+
+.btnDelete {
+    background-color: transparent;
+    border: none;
+    color: darkred;
 }
-.btnEditLarge{
-  background-color: transparent;
-  border: 2px solid darkgreen;
-  color: darkgreen;
+
+.btnDelete:hover {
+    background-color: darkred;
+    color: white;
 }
-.btnEditLarge:hover{
-  background-color: darkgreen;
-  border: 2px solid darkgreen;
-  color: white;
+
+.btnEdit {
+    background-color: transparent;
+    border: none;
+    color: darkgreen;
+}
+
+.btnEdit:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+.btnDeleteLarge {
+    background-color: transparent;
+    border: 2px solid darkred;
+    color: darkred;
+}
+
+.btnDeleteLarge:hover {
+    background-color: darkred;
+    border: 2px solid darkred;
+    color: white;
+}
+
+.btnEditLarge {
+    background-color: transparent;
+    border: 2px solid darkgreen;
+    color: darkgreen;
+}
+
+.btnEditLarge:hover {
+    background-color: darkgreen;
+    border: 2px solid darkgreen;
+    color: white;
 }
 
 .btn:hover {
-  color: #fff;
+    color: #fff;
 }
 
 .input-text:focus {
-  box-shadow: 0px 0px 0px;
-  border-color: #f8c146;
-  outline: 0px;
+    box-shadow: 0px 0px 0px;
+    border-color: #f8c146;
+    outline: 0px;
 }
 
 .searchControl {
-  border: 1px solid #f8c146;
+    border: 1px solid #f8c146;
 }
 
-.authorA:hover{
-  color: #683516;
+.authorA:hover {
+    color: #683516;
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+    height: 100%;
+}
 
-img{
-  pointer-events: none;
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+img {
+    pointer-events: none;
 }
 
 .uploadButton::-webkit-file-upload-button {
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  font-size: 12px;
-  outline: none;
-  padding: 10px 25px;
-  text-transform: uppercase;
-  transition: all 1s ease;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    transition: all 1s ease;
 }
 
 .uploadButton:hover::-webkit-file-upload-button {
-  background-color: rgba(255, 75, 43, 0.65);
-  border: 1px solid rgba(255, 75, 43, 0.51);
-  color: white;
+    background-color: rgba(255, 75, 43, 0.65);
+    border: 1px solid rgba(255, 75, 43, 0.51);
+    color: white;
 }
 
 .fc .fc-toolbar-title {
-  color: #fcab33;
-  font-size: 2.25em;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
+    color: #fcab33;
+    font-size: 2.25em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 .fc .fc-col-header-cell-cushion {
-  display: inline-block;
-  padding: 2px 4px;
-  color: #E5DE00;
+    display: inline-block;
+    padding: 2px 4px;
+    color: #E5DE00;
 }
 
 .fc .fc-daygrid-day-number {
-  position: relative;
-  z-index: 4;
-  padding: 4px;
-  color: #00b1b1;
-  font-weight: 500;
+    position: relative;
+    z-index: 4;
+    padding: 4px;
+    color: #00b1b1;
+    font-weight: 500;
 }
 
-.fc .fc-button-group>.fc-button {
-  position: relative;
-  flex: 1 1 auto;
-  margin: 5px;
-  background-color: #17a2b8;
-  border: none;
+.fc .fc-button-group > .fc-button {
+    position: relative;
+    flex: 1 1 auto;
+    margin: 5px;
+    background-color: #17a2b8;
+    border: none;
 }
 
 .containerLogDay {
-  background-color: #f0f9f9;
-  height: 100%;
-  width: 100%;
+    background-color: #f0f9f9;
+    height: 100%;
+    width: 100%;
 }
 
 .foodLink {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .kcalText {
-  font-family: Poppins, sans-serif;
-  font-size: 1.5vw;
-  font-weight: bold;
-  color: #606060;
+    font-family: Poppins, sans-serif;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #606060;
 }
 
 .nutrientsInfoText {
-  font-family: Poppins, sans-serif;
-  font-size: 1.2vw;
-  font-weight: bold;
-  color: #606060;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #606060;
 }
 
 .loader {
-  width: 4vw;
-  height: 4vw;
-  border: 5px solid #FFF;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+    width: 4vw;
+    height: 4vw;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .margin-loader {
-  margin-top: 14vw;
+    margin-top: 14vw;
 }
 
 .loadingText {
-  font-family: Poppins, sans-serif;
-  font-size: 1vw;
-  color: #606060;
+    font-family: Poppins, sans-serif;
+    font-size: 1vw;
+    color: #606060;
 }
 
 .date-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5vw;
-  color: #010165;
-  text-decoration: underline;
-  text-decoration-color: darkslateblue;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.5vw;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5vw;
+    color: #010165;
+    text-decoration: underline;
+    text-decoration-color: darkslateblue;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.5vw;
 
 }
 
 .caloriesInfoContainer {
-  font-family: 'IBM Plex Sans', sans-serif;
-  color: #a56a43;
-  font-size: 1.5vw;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #a56a43;
+    font-size: 1.5vw;
 }
 
 .caloriesInfoSpan {
-  font-family: Nunito, sans-serif;
-  font-weight: lighter;
-  color: #683516;
-  font-size: 1.3vw;
+    font-family: Nunito, sans-serif;
+    font-weight: lighter;
+    color: #683516;
+    font-size: 1.3vw;
 }
 
 .mealsInfoContainer {
-  font-family: Poppins, sans-serif;
-  font-size: 2.2vw;
-  font-weight: bold;
-  color: #2d2b2b;
-  line-height: 1;
+    font-family: Poppins, sans-serif;
+    font-size: 2.2vw;
+    font-weight: bold;
+    color: #2d2b2b;
+    line-height: 1;
 }
 
 details[open] summary ~ * {
-  animation: open 0.5s ease-in-out;
+    animation: open 0.5s ease-in-out;
 }
 
 @keyframes open {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
+
 details summary::-webkit-details-marker {
-  display: none;
+    display: none;
 }
 
 details summary {
-  width: 100%;
-  padding: 0.5rem 0;
-  position: relative;
-  cursor: pointer;
-  font-size: 1.25rem;
-  font-weight: 300;
-  list-style: none;
+    width: 100%;
+    padding: 0.5rem 0;
+    position: relative;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 300;
+    list-style: none;
 }
 
 details summary:after {
-  content: "+";
-  color: rgba(94, 94, 94, 0.75);
-  position: absolute;
-  font-size: 1.75rem;
-  line-height: 0;
-  margin-top: 0.75rem;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  font-weight: 200;
-  transform-origin: center;
-  transition: 200ms linear;
+    content: "+";
+    color: rgba(94, 94, 94, 0.75);
+    position: absolute;
+    font-size: 1.75rem;
+    line-height: 0;
+    margin-top: 0.75rem;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    font-weight: 200;
+    transform-origin: center;
+    transition: 200ms linear;
 }
+
 details[open] summary:after {
-  transform: rotate(45deg);
-  font-size: 2rem;
+    transform: rotate(45deg);
+    font-size: 2rem;
 }
+
 details summary {
-  outline: 0;
+    outline: 0;
+}
+
+.customTransition {
+    transition: opacity 1s ease-out 0s;
+
+}
+
+.modal-content {
+    border: none;
+    border-radius: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade {
+        transition: opacity 0.7s ease-out 0s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal.fade .modal-dialog{
+        transition: opacity 0.7s ease-out 0s;
+    }
+}
+
+.info-message {
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
