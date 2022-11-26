@@ -32,7 +32,7 @@
 
             <div class="card h-100 w-100 ">
                 <a th:href="@{'/recipes/details/{id}' (id=${rec.getId()})}">
-                    <img th:src="@{${'/uploads/' + rec.getImages().get(0).getTitle()}}" class="card-img-top rounded-0"
+                    <img th:src="@{${'/recipes_images/' + rec.getImages().get(0).getTitle()}}" class="card-img-top rounded-0"
                          alt="...">
                 </a>
                 <div class="card-body rounded-0 p-3">
@@ -58,7 +58,7 @@
 
             <div class="card h-100 w-100 ">
                 <a th:href="@{'/recipes/details/{id}' (id=${rec.getId()})}">
-                    <img th:src="@{${'/uploads/' + rec.getImages().get(0).getTitle()}}" class="card-img-top rounded-0"
+                    <img th:src="@{${'/recipes_images/' + rec.getImages().get(0).getTitle()}}" class="card-img-top rounded-0"
                          alt="...">
                 </a>
                 <div class="card-body rounded-0 p-3">
@@ -71,7 +71,7 @@
 
                     </p>
                     <a th:href="@{'/recipes/addToMeal/{id}' (id=${rec.getId()})}"
-                       class="btn btnSave rounded-pill px-3 fw-bold">ADD </i></a>
+                       class="btn btnSave rounded-pill px-3 fw-bold">ADD <i class="fa-solid fa-plus"></i></a>
                 </div>
             </div>
 

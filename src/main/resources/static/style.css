@@ -139,6 +139,7 @@ body {
     width: 90%;
     font-size: 1vw;
     text-transform: uppercase;
+    font-weight: bold;
 
 }
 
@@ -176,6 +177,7 @@ body {
     color: white;
     background-color: #857764;
     border: 1px solid rgba(136, 119, 99, 0.64);
+    font-weight: bold;
 }
 
 .formBtnJump {
@@ -1010,13 +1012,13 @@ details summary {
 
 @media (prefers-reduced-motion: reduce) {
     .fade {
-        transition: opacity 0.7s ease-out 0s;
+        transition: opacity 0.5s ease-out 0s;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .modal.fade .modal-dialog{
-        transition: opacity 0.7s ease-out 0s;
+        transition: opacity 0.5s ease-out 0s;
     }
 }
 
