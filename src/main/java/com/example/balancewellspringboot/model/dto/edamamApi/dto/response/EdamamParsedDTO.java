@@ -1,4 +1,4 @@
-package com.example.balancewellspringboot.model.dto.edamamApi.dto;
+package com.example.balancewellspringboot.model.dto.edamamApi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

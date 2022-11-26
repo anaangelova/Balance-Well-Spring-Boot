@@ -5,8 +5,8 @@ import com.example.balancewellspringboot.model.dto.AddFoodDTO;
 import com.example.balancewellspringboot.model.dto.FoodDetailDTO;
 import com.example.balancewellspringboot.model.dto.IngredientDTO;
 import com.example.balancewellspringboot.model.dto.RecipeAddToMealRequestDTO;
-import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamFoodDetailResponseDTO;
-import com.example.balancewellspringboot.model.dto.edamamApi.dto.EdamamIngredientDTO;
+import com.example.balancewellspringboot.model.dto.edamamApi.dto.response.EdamamFoodDetailResponseDTO;
+import com.example.balancewellspringboot.model.dto.edamamApi.dto.response.EdamamIngredientDTO;
 
 import java.io.IOException;
 import java.time.LocalDate;

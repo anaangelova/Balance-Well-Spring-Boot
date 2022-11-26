@@ -8,7 +8,9 @@ import com.example.balancewellspringboot.model.dto.AddFoodDTO;
 import com.example.balancewellspringboot.model.dto.FoodDetailDTO;
 import com.example.balancewellspringboot.model.dto.IngredientDTO;
 import com.example.balancewellspringboot.model.dto.RecipeAddToMealRequestDTO;
-import com.example.balancewellspringboot.model.dto.edamamApi.dto.*;
+import com.example.balancewellspringboot.model.dto.edamamApi.dto.request.EdamamFoodQuantityMeasureDTO;
+import com.example.balancewellspringboot.model.dto.edamamApi.dto.request.EdamamIngredientDataDTO;
+import com.example.balancewellspringboot.model.dto.edamamApi.dto.response.*;
 import com.example.balancewellspringboot.model.exceptions.RecipeNotFoundException;
 import com.example.balancewellspringboot.repository.IngredientRepository;
 import com.example.balancewellspringboot.repository.MealRepository;
@@ -19,7 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.httpclient.util.URIUtil;
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
