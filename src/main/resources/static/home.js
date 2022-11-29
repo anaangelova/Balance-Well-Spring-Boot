@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'prev,next',
             end: ''
         },
+        firstDay: 1,
         navLinkDayClick: function (date) {
             $.ajax({
                 url: "http://localhost:8080/calendar/logDay?date=" + date.toISOString(),

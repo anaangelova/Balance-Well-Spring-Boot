@@ -1,5 +1,6 @@
 package com.example.balancewellspringboot.web;
 
+import com.example.balancewellspringboot.model.Image;
 import com.example.balancewellspringboot.model.enums.Activity;
 import com.example.balancewellspringboot.model.enums.Goal;
 import com.example.balancewellspringboot.model.Profile;
@@ -16,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +43,10 @@ public class ProfileController {
     @GetMapping("/my-profile/{username}")
     public String getProfileForUsername(@PathVariable String username, Model model) {
         Profile profile = profileService.getProfileForUsername(username);
-        String latestImage = profile.getEndUser().getImages().get(profile.getEndUser().getImages().size()-1).getTitle();
+        String latestImage = profile.getEndUser()
+                .getImages()
+                .stream().max(Comparator.comparing(Image::getUploadDate)).get().getTitle();
+
         model.addAttribute("profile", profile);
         model.addAttribute("image", latestImage);
         model.addAttribute("endUser", profile.getEndUser().getUsername());
