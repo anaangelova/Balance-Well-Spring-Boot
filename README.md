@@ -1,4 +1,4 @@
-# Recipes Guide: Taste The Joy
+# Balance Well: The Wellness App
 
 This is a ***Spring Boot*** Web Application which main purpose is to help people define their nutritional and calorie needs in order to fulfill their specified goals.
 Users can easily register themselves using the registration form or via single sign-on with their Google account. This is implemented by using ***Spring Security and OAuth2***.
